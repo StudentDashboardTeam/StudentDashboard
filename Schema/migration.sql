@@ -69,7 +69,7 @@ CREATE TABLE `student_info`
 CREATE TABLE `events`
 (
   `type`       INT unsigned NOT NULL ,
-  `administer` INT unsigned NOT NULL ,
+  `administerer` INT unsigned NOT NULL ,
   `student`    INT unsigned NOT NULL ,
   `date`       DATETIME NOT NULL ,
   `notes`      TEXT ,
@@ -77,8 +77,8 @@ CREATE TABLE `events`
 
   KEY `STUDENT` (`student`),
   CONSTRAINT `STUDENT_EVENTS` FOREIGN KEY `STUDENT` (`student`) REFERENCES `student` (`id`),
-  KEY `ADMINISTER` (`administer`),
-  CONSTRAINT `USERS_EVENTS` FOREIGN KEY `ADMINISTER` (`administer`) REFERENCES `users` (`id`),
+  KEY `ADMINISTERER` (`administerer`),
+  CONSTRAINT `USERS_EVENTS` FOREIGN KEY `ADMINISTERER` (`administerer`) REFERENCES `users` (`id`),
   KEY `TYPE` (`type`),
   CONSTRAINT `EVENT_EVENTS` FOREIGN KEY `TYPE` (`type`) REFERENCES `event` (`id`)
 );
