@@ -1,4 +1,4 @@
-use  student_dashboard_db;
+USE student_dashboard_db;
 
 insert into users (username, email, password) values ('jwotherspoon0', 'ybissell0@zimbio.com', 'zDDu33d6RvSm');
 insert into users (username, email, password) values ('mwebster1', 'lhellyer1@blog.com', 'ouWgfFpgTjxr');

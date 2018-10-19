@@ -1,6 +1,8 @@
-CREATE DATABASE student_dashboard_db;
+CREATE DATABASE IF NOT EXISTS student_dashboard_db;
+
 
 USE student_dashboard_db;
+
 
 DROP TABLE IF EXISTS `events`;
 
