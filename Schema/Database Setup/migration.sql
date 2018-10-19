@@ -1,5 +1,3 @@
-DROP DATABASE student_dashboard_db;
-
 CREATE DATABASE student_dashboard_db;
 
 USE student_dashboard_db;
