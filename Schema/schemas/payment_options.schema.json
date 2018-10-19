@@ -1,0 +1,54 @@
+{
+  "num_rows": 100,
+  "file_format": "sql",
+  "name": "payment_options",
+  "table_name": "payment_options",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "self",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "va_benefits",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "loan",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "grant",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "other",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    }
+  ]
+}
