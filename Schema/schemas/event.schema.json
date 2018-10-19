@@ -1,0 +1,21 @@
+{
+  "num_rows": 1000,
+  "file_format": "sql",
+  "name": "event",
+  "table_name": "event",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "id",
+      "null_percentage": 0,
+      "type": "Row Number",
+      "formula": ""
+    },
+    {
+      "name": "name",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": ""
+    }
+  ]
+}

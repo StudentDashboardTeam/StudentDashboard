@@ -1,0 +1,62 @@
+{
+  "num_rows": 1000,
+  "file_format": "sql",
+  "name": "events",
+  "table_name": "events",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "type",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 8,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "administerer",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 4,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "student",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "date",
+      "null_percentage": 0,
+      "type": "Date",
+      "min": "04/18/2018",
+      "max": "10/18/2018",
+      "format": "%Y-%m-%d %H:%M:%S",
+      "formula": ""
+    },
+    {
+      "name": "notes",
+      "null_percentage": 30,
+      "type": "Words",
+      "min": 10,
+      "max": 100,
+      "formula": ""
+    },
+    {
+      "name": "score",
+      "null_percentage": 30,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    }
+  ]
+}

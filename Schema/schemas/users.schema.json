@@ -1,0 +1,27 @@
+{
+  "num_rows": 1000,
+  "file_format": "sql",
+  "name": "users",
+  "table_name": "users",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "username",
+      "null_percentage": 0,
+      "type": "Username",
+      "formula": ""
+    },
+    {
+      "name": "email",
+      "null_percentage": 0,
+      "type": "Email Address",
+      "formula": ""
+    },
+    {
+      "name": "password",
+      "null_percentage": 0,
+      "type": "Password",
+      "formula": ""
+    }
+  ]
+}

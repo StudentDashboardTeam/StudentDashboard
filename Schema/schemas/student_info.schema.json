@@ -1,0 +1,181 @@
+{
+  "num_rows": 100,
+  "file_format": "sql",
+  "name": "student_info",
+  "table_name": "student_info",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "email",
+      "null_percentage": 0,
+      "type": "Email Address",
+      "formula": ""
+    },
+    {
+      "name": "phone",
+      "null_percentage": 0,
+      "type": "Phone",
+      "format": "###-###-####",
+      "formula": ""
+    },
+    {
+      "name": "allow_sms",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "street_address",
+      "null_percentage": 0,
+      "type": "Street Address",
+      "formula": ""
+    },
+    {
+      "name": "city_of_residence",
+      "null_percentage": 0,
+      "type": "City",
+      "formula": ""
+    },
+    {
+      "name": "zip_code",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 10000,
+      "max": 99999,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "age",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 18,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "gender",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "gender_data",
+      "column": null,
+      "selectionStyle": "random",
+      "formula": ""
+    },
+    {
+      "name": "referrer",
+      "null_percentage": 0,
+      "type": "Full Name",
+      "formula": ""
+    },
+    {
+      "name": "free_schedule",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "resume_file",
+      "null_percentage": 40,
+      "type": "File Name",
+      "formula": ""
+    },
+    {
+      "name": "gi_bill",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "billboards",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "billboards",
+      "column": null,
+      "selectionStyle": "random",
+      "formula": ""
+    },
+    {
+      "name": "best_describes_you",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "hear_about_us",
+      "column": null,
+      "selectionStyle": "random",
+      "formula": ""
+    },
+    {
+      "name": "payment_options",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "description_other",
+      "null_percentage": 30,
+      "type": "Words",
+      "min": 10,
+      "max": 60,
+      "formula": ""
+    },
+    {
+      "name": "why",
+      "null_percentage": 0,
+      "type": "Words",
+      "min": 10,
+      "max": 50,
+      "formula": ""
+    },
+    {
+      "name": "questions",
+      "null_percentage": 0,
+      "type": "Words",
+      "min": 10,
+      "max": 50,
+      "formula": ""
+    },
+    {
+      "name": "hear_about_us",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "cohort_id",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 10,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "first_name",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": ""
+    },
+    {
+      "name": "last_name",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": ""
+    }
+  ]
+}
