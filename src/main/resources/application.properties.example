@@ -1,0 +1,9 @@
+spring.mvc.view.prefix: /WEB-INF/jsp/
+spring.mvc.view.suffix: .jsp
+
+
+spring.datasource.url=jdbc:mysql://localhost/student_dashboard_db?createDatabaseIfNotExist=true&useSSL=false
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true

@@ -7,7 +7,13 @@
 </head>
 <body>
 
-<h1><c:out value="${welcome}"/></h1>
+<h1><c:out value="${message}"/></h1>
+
+<ul>
+    <c:forEach var="user" items="${users}" >
+        <li><c:out value="${user}" /></li>
+    </c:forEach>
+</ul>
 
 </body>
 </html>
