@@ -1,0 +1,135 @@
+{
+  "num_rows": 100,
+  "file_format": "sql",
+  "name": "hear_about_us",
+  "table_name": "hear_about_us",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "twitter_facebook",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "youtube",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "muse",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "billboard",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "tv",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "radio",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "news",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "web",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "geekdom",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "friend_family",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "employer",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "student",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "job_school_fair",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "other",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 1,
+      "decimals": 0,
+      "formula": ""
+    }
+  ]
+}

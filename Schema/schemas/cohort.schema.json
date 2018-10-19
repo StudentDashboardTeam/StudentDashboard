@@ -1,0 +1,42 @@
+{
+  "num_rows": 10,
+  "file_format": "sql",
+  "name": "cohort",
+  "table_name": "cohort",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "name",
+      "null_percentage": 0,
+      "type": "Animal Scientific Name",
+      "formula": ""
+    },
+    {
+      "name": "start_date",
+      "null_percentage": 0,
+      "type": "Date",
+      "min": "11/01/2017",
+      "max": "02/28/2019",
+      "format": "%Y-%m-%d",
+      "formula": ""
+    },
+    {
+      "name": "end_date",
+      "null_percentage": 0,
+      "type": "Date",
+      "min": "03/31/2018",
+      "max": "07/31/2019",
+      "format": "%Y-%m-%d",
+      "formula": ""
+    },
+    {
+      "name": "type",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "corhort_type",
+      "column": null,
+      "selectionStyle": "random",
+      "formula": ""
+    }
+  ]
+}
