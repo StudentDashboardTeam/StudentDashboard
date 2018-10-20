@@ -11,16 +11,16 @@ public class Events {
     @GeneratedValue
     private long id;
 
-    @OneToOne
-    @Column(name = "type", nullable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "type")
     private Event type;
 
-    @OneToOne
-    @Column(name = "administerer", nullable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "administerer")
     private User user;
 
-    @OneToOne
-    @Column(name = "student", nullable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "student")
     private Student student;
 
     @Column(name = "date", nullable = false)

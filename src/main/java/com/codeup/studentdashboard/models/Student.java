@@ -74,16 +74,15 @@ public class Student {
     @Column(name = "questions")
     private String questions;
 
-    @OneToOne
-    @Column(name = "payment_options", nullable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "payment_options")
     private PaymentOptions paymentOptions;
 
-    @OneToOne
-    @Column(name = "hear_about_us", nullable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "hear_about_us")
     private HearAboutUs hearAboutUs;
 
     @OneToOne
-    @Column(name = "cohort_id")
     private Cohort cohort;
 
     public Student(Student copy) {

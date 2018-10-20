@@ -37,19 +37,4 @@ public class UsersWithRoles extends User implements UserDetails {
         public boolean isEnabled() {
             return true;
         }
-
-        @Override
-        public String getUsername() {
-            return username();
-        }
-
-        @Override
-        public String getPassword() {
-            return password();
-        }
-
-//        @Override
-//        public String getPassword() {
-//            return users.username;
-//        }
     }
