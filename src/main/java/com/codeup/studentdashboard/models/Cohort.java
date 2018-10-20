@@ -40,43 +40,43 @@ public class Cohort {
         this.type = type;
     }
 
-    public long id() {
+    public long getId() {
         return id;
     }
 
-    public void id(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public void name(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Date start_date() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void start_date(Date startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Date end_date() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void end_date(Date endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public CohortType type() {
+    public CohortType getType() {
         return type;
     }
 
-    public void type(CohortType type) {
+    public void setType(CohortType type) {
         this.type = type;
     }
 }
