@@ -16,6 +16,9 @@
 <!--<%&#45;&#45;</html>&#45;&#45;%>-->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <!-- ... -->
+<head th:replace="partials :: head" />
+<body>
+<nav th:replace="partials :: navbar" />
 <div sec:authorize="isAuthenticated()">
     This content is only shown to authenticated users.
 
@@ -23,3 +26,5 @@
     Username: <span th:text="${#authentication.principal.username}">defaultUser</span>
     Email: <span th:text="${#authentication.principal.email}">defaultEmail</span>
 </div>
+</body>
+</html>
