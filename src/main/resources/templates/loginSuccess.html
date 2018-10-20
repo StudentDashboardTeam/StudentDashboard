@@ -1,0 +1,25 @@
+<!--<%&#45;&#45;-->
+  <!--Created by IntelliJ IDEA.-->
+  <!--User: ryan-->
+  <!--Date: 10/19/18-->
+  <!--Time: 7:26 PM-->
+  <!--To change this template use File | Settings | File Templates.-->
+<!--&#45;&#45;%>-->
+<!--<%&#45;&#45;<%@ page contentType="text/html;charset=UTF-8" language="java" %>&#45;&#45;%>-->
+<!--<%&#45;&#45;<html>&#45;&#45;%>-->
+<!--<%&#45;&#45;<head>&#45;&#45;%>-->
+    <!--<%&#45;&#45;<title>Title</title>&#45;&#45;%>-->
+<!--<%&#45;&#45;</head>&#45;&#45;%>-->
+<!--<%&#45;&#45;<body>&#45;&#45;%>-->
+
+<!--<%&#45;&#45;</body>&#45;&#45;%>-->
+<!--<%&#45;&#45;</html>&#45;&#45;%>-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!-- ... -->
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}">defaultID</span>
+    Username: <span th:text="${#authentication.principal.username}">defaultUser</span>
+    Email: <span th:text="${#authentication.principal.email}">defaultEmail</span>
+</div>
