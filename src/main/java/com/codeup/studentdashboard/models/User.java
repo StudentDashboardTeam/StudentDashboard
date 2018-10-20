@@ -4,8 +4,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    @Id @GeneratedValue
-    private long id;
+    @Id
+    @GeneratedValue
+    @Column(name="id")
+    private Long id;
 
     @Column(nullable=false, length = 45)
     private String username;
@@ -26,7 +28,8 @@ public class User {
         password = copy.password;
     }
 
-    public User(String username, String email, String password) {
+    public User(Long id, String username, String email, String password) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -41,7 +44,7 @@ public class User {
     }
 
     public String username() {
-        return username;
+        return this.username;
     }
 
     public void username(String username) {
@@ -63,4 +66,20 @@ public class User {
     public void password(String password) {
         this.password = password;
     }
+
+    public String getUsername() { return this.username; }
+
+    public void setUsername(String username) { this.username = username; }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public String getEmail() { return this.email; }
+
+    public String getPassword() { return this.password; }
+
+    public void setPassword(String password) { this.password = password; }
+
+//    public User findByUsername(String username) {
+//
+//    };
 }

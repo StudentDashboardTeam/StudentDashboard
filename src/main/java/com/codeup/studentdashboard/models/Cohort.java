@@ -1,5 +1,4 @@
 package com.codeup.studentdashboard.models;
-
 import com.codeup.studentdashboard.models.enums.CohortType;
 import com.codeup.studentdashboard.models.enums.CohortTypeConverter;
 
