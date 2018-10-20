@@ -26,6 +26,21 @@ public class Cohort {
     @Convert(converter = CohortTypeConverter.class)
     private CohortType type;
 
+    public Cohort(Cohort copy) {
+        id = copy.id;
+        name = copy.name;
+        startDate = copy.startDate;
+        endDate = copy.endDate;
+        type = copy.type;
+    }
+
+    public Cohort(String name, Date startDate, Date endDate, CohortType type) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.type = type;
+    }
+
     public long id() {
         return id;
     }
