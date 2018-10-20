@@ -126,6 +126,7 @@ CONSTRAINT `HEAR_STUDENT` FOREIGN KEY `HEAR_ABOUT_US` (`hear_about_us`) REFERENC
 
 CREATE TABLE `events`
 (
+ `id`          INT unsigned NOT NULL AUTO_INCREMENT ,
  `type`         INT unsigned NOT NULL ,
  `administerer` INT unsigned NOT NULL ,
  `student`      INT unsigned NOT NULL ,
@@ -133,6 +134,7 @@ CREATE TABLE `events`
  `notes`        TEXT ,
  `score`        INT ,
 
+PRIMARY KEY (`id`),
 KEY `STUDENT` (`student`),
 CONSTRAINT `STUDENT_EVENTS` FOREIGN KEY `STUDENT` (`student`) REFERENCES `student` (`id`),
 KEY `ADMINISTERER` (`administerer`),
