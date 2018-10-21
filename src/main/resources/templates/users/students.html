@@ -3,6 +3,15 @@
 <head th:replace="partials :: head" />
 <body>
 
+<!--<div sec:authorize="isAuthenticated()">-->
+    <!--This content is only shown to authenticated users.-->
+
+    <!--User ID: <span th:text="${#authentication.principal.id}">defaultID</span>-->
+    <!--Username: <span th:text="${#authentication.principal.username}">defaultUser</span>-->
+    <!--Email: <span th:text="${#authentication.principal.email}">defaultEmail</span>-->
+    <!--Admin: <span th:text="${#authentication.principal.admin}">defaultAdmin</span>-->
+<!--</div>-->
+
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />

@@ -18,20 +18,26 @@ public class User {
     @Column(nullable = false, length = 98)
     private String password;
 
+    @Column(name = "is_admin", nullable = false)
+    private boolean admin;
+
     public User() {
     }
 
-    public User(User copy){
-        id = copy.id;
-        username = copy.username;
-        email = copy.email;
-        password = copy.password;
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.admin = copy.admin;
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password,
+                boolean isAdmin) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.admin = isAdmin;
     }
 
     public Long getId() {
@@ -64,5 +70,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

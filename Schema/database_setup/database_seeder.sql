@@ -1,10 +1,11 @@
 USE student_dashboard_db;
 
-insert into users (username, email, password) values ('jwotherspoon0', 'ybissell0@zimbio.com', 'zDDu33d6RvSm');
-insert into users (username, email, password) values ('mwebster1', 'lhellyer1@blog.com', 'ouWgfFpgTjxr');
-insert into users (username, email, password) values ('kcracknell2', 'ksimmings2@webeden.co.uk', 'bPHWwXFFsVI');
-insert into users (username, email, password) values ('mmerklem', 'hcelesm@4shared.com', 'Ut6o6n');
-insert into users (username, email, password) values ('bbeckhamn', 'tvarrenn@amazon.com', 'AVIRPL');
+insert into users (username, email, password, is_admin) values ('jwotherspoon0', 'ybissell0@zimbio.com', 'zDDu33d6RvSm', 0);
+insert into users (username, email, password, is_admin) values ('mwebster1', 'lhellyer1@blog.com', 'ouWgfFpgTjxr', 0);
+insert into users (username, email, password, is_admin) values ('kcracknell2', 'ksimmings2@webeden.co.uk', 'bPHWwXFFsVI', 0);
+insert into users (username, email, password, is_admin) values ('mmerklem', 'hcelesm@4shared.com', 'Ut6o6n', 0);
+insert into users (username, email, password, is_admin) values ('bbeckhamn', 'tvarrenn@amazon.com', 'AVIRPL', 0);
+insert into users (username, email, password, is_admin) values ('admin', 'tvarrenn@amazon.com', '$argon2id$v=19$m=65536,t=63,p=4$xyheCVscuFMuHiby6ugSag$8NDkAQtq0NGJOewPPqfydTBztwJRMr+notIxlbUkJ8A', 1);
 insert into payment_options (self, va_benefits, loan, scholarship, other) values (0, 1, 0, 1, 1);
 insert into payment_options (self, va_benefits, loan, scholarship, other) values (1, 0, 1, 0, 1);
 insert into payment_options (self, va_benefits, loan, scholarship, other) values (0, 0, 1, 0, 0);
