@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
             if (user == null) {
                 throw new UsernameNotFoundException("No user found for " + username);
             }
-            if (user.isAdmin()) {
+            if (user.getAdmin() == true) {
                 return new UsersWithRoles(user);
             }
             return null;
