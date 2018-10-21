@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+<div sec:authorize="isAuthenticated()">
+
+    <nav th:replace="partials :: navbar" />
+    <div class="container">
+        <h1 class="mb-4">Cohort Profile Viewer</h1>
+        <div class="card border-success mb-3" style="max-width: 100%;">
+            <div class="card-header"><h3 th:text="${cohort.name}"/></div>
+            <div class="card-body">
+                <h4 class="card-title">Cohort Information</h4>
+                <h6 class="card-text" style="color:#74b566"><strong>Number of students in Cohort:</strong> <h5 th:text="${studentCount}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>Start Date:</strong> <h5  th:text="${cohort.startDate}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>End Date:</strong> <h5  th:text="${cohort.endDate}"/></h6>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

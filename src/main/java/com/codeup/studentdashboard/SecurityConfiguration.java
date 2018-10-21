@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(
                             "/users/students",
                             "/users/studentProfile", // only authenticated users view and create students
+                            "/users/cohortProfile",
                             "/users/cohorts",
                             "/users/metrics"// only authenticated users can view metrics
                     )
