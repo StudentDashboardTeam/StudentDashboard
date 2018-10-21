@@ -36,27 +36,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 /* Login configuration */
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/users/students") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/users/students") // user's home page, it can be any URL
+                    .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
+                    .logout()
+                    .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
-                .authorizeRequests()
-                .antMatchers("/") // anyone can see the home page
-                .permitAll()
+                    .authorizeRequests()
+                    .antMatchers("/") // anyone can see the home page
+                    .permitAll()
                 /* Pages that require athentication */
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/users/students",
-                        "users/studentProfile", // only authenticated users view and create students
-                        "/users/cohorts",
-                        "/users/metrics"// only authenticated users can view metrics
-                )
+                    .authorizeRequests()
+                    .antMatchers(
+                            "/users/students",
+                            "/users/studentProfile", // only authenticated users view and create students
+                            "/users/cohorts",
+                            "/users/metrics"// only authenticated users can view metrics
+                    )
                 .authenticated()
         ;
     }

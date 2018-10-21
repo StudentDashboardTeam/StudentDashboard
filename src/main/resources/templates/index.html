@@ -1,8 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials :: head" />
 <body>
+
 <nav th:replace="partials :: navbar" />
+
+<!--<div sec:authentication="isAnonymous()">-->
+    <!--<nav th:replace="partials :: navbar" />-->
+<!--</div>-->
+
+
+<!--<div sec:authentication="isFullyAuthenticated()">-->
+    <!--<nav th:replace="partials :: navbar-auth" />-->
+<!--</div>-->
+
 <div class="container">
 <h1>Welcome to the Student Dashboard</h1>
 </div>

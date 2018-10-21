@@ -15,11 +15,11 @@ public class Events {
     @JoinColumn(name = "type")
     private Event type;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "administerer")
     private User user;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "student")
     private Student student;
 
