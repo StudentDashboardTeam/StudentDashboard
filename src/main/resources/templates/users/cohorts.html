@@ -9,20 +9,18 @@
     <h1>Cohort QuickView</h1>
     <h5 class="mb-4">Click on Cohort name to see a profile.</h5>
     <table>
-        <tr>
-            <th>Cohort Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+        <tr class="table-success">
+            <th scope="row">Cohort Name</th>
+            <th scope="row">Start Date</th>
+            <th scope="row" class="pl-4">End Date</th>
         </tr>
         <tr th:each="cohort : ${cohorts}">
-            <td><p th:text="${cohort.getName()}" /></td>
+            <td><a th:href="@{/users/cohorts/{id}(id=${cohort.id})}"><p th:text="${cohort.getName()}" /></a></td>
             <td><p th:text="${cohort.startDate}"/></td>
-            <td><p th:text="${cohort.endDate}"/></td>
+            <td class="pl-4"><p th:text="${cohort.endDate}"/></td>
         </tr>
     </table>
-
 </div>
-
 </div>
 </body>
 </html>
