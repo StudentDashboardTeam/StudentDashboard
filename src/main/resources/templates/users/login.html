@@ -14,14 +14,14 @@
 
 <form th:action="@{/login}" method="post">
     <div class="form-group">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
+        <label for="username">Email address</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
     </div>
     <div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
     </div>
-    <input type="submit" value="Log In" />
+    <button type="submit" class="btn btn-success">Log In</button>
 </form>
 </div>
 </body>

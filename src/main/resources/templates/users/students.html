@@ -19,29 +19,23 @@
         <h1>Student QuickView</h1>
         <h5 class="mb-4">Click on students first name to see a profile.</h5>
         <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Allow Texts</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Zip Code</th>
-                <th>Age</th>
-                <th>Gender</th>
+            <tr class="table-success">
+                <th scope="row">First Name</th>
+                <th scope="row" class="pl-4">Last Name</th>
+                <th scope="row">Email</th>
+                <th scope="row">Phone</th>
+                <th scope="row" class="pl-4">Allow Texts</th>
+                <th scope="row">Address</th>
+                <th scope="row">City</th>
             </tr>
-            <tr style="font-size:13px" th:each="student : ${students}">
+            <tr style="font-size:15px" th:each="student : ${students}">
                 <td><a th:href="@{/users/students/{id}(id=${student.id})}"><p th:text="${student.firstName}" /></a></td>
-                <td><p th:text="${student.lastName}"/></td>
+                <td class="pl-4"><p th:text="${student.lastName}"/></td>
                 <td><p th:text="${student.email}"/></td>
                 <td><p th:text="${student.phone}"/></td>
-                <td><p th:text="${student.allowSms}"/></td>
+                <td class="px-5"><p th:text="${student.allowSms}"/></td>
                 <td><p th:text="${student.streetAddress}"/></td>
                 <td><p th:text="${student.cityOfResidence}"/></td>
-                <td><p th:text="${student.zipCode}"/></td>
-                <td><p th:text="${student.age}"/></td>
-                <td><p th:text="${student.gender}"/></td>
             </tr>
         </table>
 
