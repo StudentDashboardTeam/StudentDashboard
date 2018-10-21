@@ -11,7 +11,7 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
             case NO:
                 return "NO";
             case DONT_KNOW:
-                return "I DON'T KNOW";
+                return "DON'T REMEMBER";
             default:
                 throw new IllegalArgumentException("Unknown" + studentBillboards);
         }
@@ -24,7 +24,7 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
                 return StudentBillboards.YES;
             case "NO":
                 return StudentBillboards.NO;
-            case "I DON'T KNOW":
+            case "DON'T REMEMBER":
                 return StudentBillboards.DONT_KNOW;
             default:
                 throw new IllegalArgumentException("Unknown" + s);

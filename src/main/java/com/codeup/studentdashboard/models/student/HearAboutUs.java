@@ -52,6 +52,8 @@ public class HearAboutUs {
     @Column(name = "other")
     private boolean other;
 
+    public HearAboutUs() {}
+
     public HearAboutUs(HearAboutUs copy) {
         id = copy.id;
         twitterFacebook = copy.twitterFacebook;

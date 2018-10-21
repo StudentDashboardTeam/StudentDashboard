@@ -85,6 +85,8 @@ public class Student {
     @OneToOne
     private Cohort cohort;
 
+    public Student() {}
+
     public Student(Student copy) {
         this.id = copy.id;
         this.firstName = copy.firstName;
@@ -142,5 +144,101 @@ public class Student {
         this.paymentOptions = paymentOptions;
         this.hearAboutUs = hearAboutUs;
         this.cohort = cohort;
+    }
+
+//    public Student getStudentById(Long id) {
+//
+//    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public boolean isAllowSms() {
+        return allowSms;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public String getCityOfResidence() {
+        return cityOfResidence;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public byte getAge() {
+        return age;
+    }
+
+    public String getReferrer() {
+        return referrer;
+    }
+
+    public StudentGender getGender() {
+        return gender;
+    }
+
+    public boolean isFreeSchedule() {
+        return freeSchedule;
+    }
+
+    public String getResumeFile() {
+        return resumeFile;
+    }
+
+    public boolean isGiBill() {
+        return giBill;
+    }
+
+    public StudentBillboards getBillboards() {
+        return billboards;
+    }
+
+    public StudentDescribe getDescribe() {
+        return describe;
+    }
+
+    public String getDescOther() {
+        return descOther;
+    }
+
+    public String getWhy() {
+        return why;
+    }
+
+    public String getQuestions() {
+        return questions;
+    }
+
+    public PaymentOptions getPaymentOptions() {
+        return paymentOptions;
+    }
+
+    public HearAboutUs getHearAboutUs() {
+        return hearAboutUs;
+    }
+
+    public Cohort getCohort() {
+        return cohort;
     }
 }

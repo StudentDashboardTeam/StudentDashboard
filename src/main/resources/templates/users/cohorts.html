@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+<div sec:authorize="isAuthenticated()">
+
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <h1>Cohort QuickView</h1>
+    <h5 class="mb-4">Click on Cohort name to see a profile.</h5>
+    <table>
+        <tr>
+            <th>Cohort Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        <tr th:each="cohort : ${cohorts}">
+            <td><p th:text="${cohort.getName()}" /></td>
+            <td><p th:text="${cohort.startDate}"/></td>
+            <td><p th:text="${cohort.endDate}"/></td>
+        </tr>
+    </table>
+
+</div>
+
+</div>
+</body>
+</html>

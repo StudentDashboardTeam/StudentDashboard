@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class IndexController {
-    private final UserRepository userRepository;
 
-    public IndexController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    private final UserRepository userRepository;
+
+//    public IndexController(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     @GetMapping("/")
     public String index(Model model) {
@@ -22,7 +23,7 @@ public class IndexController {
 
 //        model.addAttribute("users", userRepository.findAll());
 
-        return "login";
+        return "index";
     }
 }
 

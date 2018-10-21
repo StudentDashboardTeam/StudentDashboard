@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+
+<div sec:authorize="isAuthenticated()">
+
+    <nav th:replace="partials :: navbar" />
+    <div class="container">
+        <h1>Student QuickView</h1>
+        <h5 class="mb-4">Click on students first name to see a profile.</h5>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Allow Texts</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Zip Code</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+            <tr style="font-size:13px" th:each="student : ${students}">
+                <td><a th:href="@{/users/students/{id}(id=${student.id})}"><p th:text="${student.firstName}" /></a></td>
+                <td><p th:text="${student.lastName}"/></td>
+                <td><p th:text="${student.email}"/></td>
+                <td><p th:text="${student.phone}"/></td>
+                <td><p th:text="${student.allowSms}"/></td>
+                <td><p th:text="${student.streetAddress}"/></td>
+                <td><p th:text="${student.cityOfResidence}"/></td>
+                <td><p th:text="${student.zipCode}"/></td>
+                <td><p th:text="${student.age}"/></td>
+                <td><p th:text="${student.gender}"/></td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -25,6 +25,8 @@ public class PaymentOptions {
     @Column(name = "other")
     private boolean other;
 
+    public PaymentOptions() {}
+
     public PaymentOptions(PaymentOptions copy) {
         id = copy.id;
         self = copy.self;

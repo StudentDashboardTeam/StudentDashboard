@@ -25,6 +25,8 @@ public class Cohort {
     @Convert(converter = CohortTypeConverter.class)
     private CohortType type;
 
+    public Cohort() {}
+
     public Cohort(Cohort copy) {
         id = copy.id;
         name = copy.name;

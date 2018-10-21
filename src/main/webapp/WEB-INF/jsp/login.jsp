@@ -16,7 +16,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <form method="POST" action="/login">
-    <div class="form-group">
+
         <label for="username">Username</label>
         <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="username" placeholder="Enter username">
     </div>
