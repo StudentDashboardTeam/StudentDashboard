@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Student Dashboard</title>
     <link href="https://bootswatch.com/4/superhero/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
 <nav th:fragment="navbar">
@@ -17,27 +18,29 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
                     <a class="nav-link" href="/users/students">Login</a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a class="nav-link" href="/users/students">Logout</a>
+                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <input type="submit" value="Logout" class="nav-link btn-link hoverCursor border-0" form="logoutForm" />
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                         <a class="nav-link" href="/users/students">Students</a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/users/cohorts">Cohorts</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" th:if="${#authorization.expression('isAuthenticated()')}">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
+        <form th:action="@{/logout}" method="post" id="logoutForm" class="d-none">
+        </form>
     </nav>
 </nav>
 
