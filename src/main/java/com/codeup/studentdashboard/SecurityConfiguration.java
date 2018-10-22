@@ -53,6 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers(
                             "/users/students",
+                            "/users/students/**",
                             "/users/studentProfile", // only authenticated users view and create students
                             "/users/cohortProfile",
                             "/users/cohorts",
