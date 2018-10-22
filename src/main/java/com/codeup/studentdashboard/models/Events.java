@@ -1,6 +1,7 @@
 package com.codeup.studentdashboard.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -24,7 +25,7 @@ public class Events {
     private Student student;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDateTime date;
 
     @Column(name = "notes")
     private String notes;
@@ -42,7 +43,7 @@ public class Events {
         this.score = copy.score;
     }
 
-    public Events(Event type, User user, Student student, Date date,
+    public Events(Event type, User user, Student student, LocalDateTime date,
                   String notes, int score) {
         this.type = type;
         this.user = user;
@@ -52,59 +53,59 @@ public class Events {
         this.score = score;
     }
 
-    public long id() {
+    public long getId() {
         return id;
     }
 
-    public void id(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Event type() {
+    public Event getType() {
         return type;
     }
 
-    public void type(Event type) {
+    public void setType(Event type) {
         this.type = type;
     }
 
-    public User user() {
+    public User getUser() {
         return user;
     }
 
-    public void user(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public Student student() {
+    public Student getStudent() {
         return student;
     }
 
-    public void student(Student student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 
-    public Date date() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void date(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public String notes() {
+    public String getNotes() {
         return notes;
     }
 
-    public void notes(String notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public int score() {
+    public int getScore() {
         return score;
     }
 
-    public void score(int score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }

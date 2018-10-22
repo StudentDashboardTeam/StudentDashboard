@@ -3,7 +3,7 @@ import com.codeup.studentdashboard.models.enums.CohortType;
 import com.codeup.studentdashboard.models.enums.CohortTypeConverter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,10 +17,10 @@ public class Cohort {
     private String name;
 
     @Column(nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(nullable = false)
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(nullable = false)
     @Convert(converter = CohortTypeConverter.class)
@@ -45,7 +45,7 @@ public class Cohort {
         students = copy.students;
     }
 
-    public Cohort(String name, Date startDate, Date endDate, CohortType type, List<Student> students) {
+    public Cohort(String name, LocalDate startDate, LocalDate endDate, CohortType type, List<Student> students) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -69,19 +69,19 @@ public class Cohort {
         this.name = name;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
