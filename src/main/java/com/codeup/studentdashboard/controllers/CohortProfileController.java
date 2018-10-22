@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,12 +26,14 @@ public class CohortProfileController {
 
     @GetMapping("/users/cohorts/{id}")
     public String cohortProfile(@PathVariable String id, Model model) {
+        List<Student> studentList = new ArrayList<>();
         Long idNumber = Long.parseLong(id);
 
         Cohort currentCohort = cohortRepository.findById(idNumber);
         model.addAttribute("cohort", currentCohort);
 
         Iterable<Student> studentInCohort = studentRepository.findAll();
+
         int studentCount = 0;
         for (Student stu : studentInCohort) {
             Cohort co = stu.getCohort();
@@ -39,6 +42,15 @@ public class CohortProfileController {
             }
         }
 
+        for (Student stu : studentInCohort) {
+            Cohort co = stu.getCohort();
+            if (co.getId() == currentCohort.getId()) {
+                studentList.add(stu);
+            }
+        }
+
+//        int studentCount = currentCohort.getStudents().size();
+        model.addAttribute("studentsAssigned", studentList);
         model.addAttribute("studentCount", studentCount);
 
         return "/users/cohortProfile";

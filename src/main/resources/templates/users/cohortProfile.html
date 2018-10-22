@@ -12,6 +12,10 @@
             <div class="card-body">
                 <h4 class="card-title">Cohort Information</h4>
                 <h6 class="card-text" style="color:#74b566"><strong>Number of students in Cohort:</strong> <h5 th:text="${studentCount}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>Students in cohort</strong></h6>
+                <div th:each="student : ${studentsAssigned}">
+                    <h6 th:text="${student.firstName} + '  ' + ${student.lastName}"></h6>
+                </div>
                 <h6 class="card-text" style="color:#74b566"><strong>Start Date:</strong> <h5  th:text="${cohort.startDate}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>End Date:</strong> <h5  th:text="${cohort.endDate}"/></h6>
             </div>
