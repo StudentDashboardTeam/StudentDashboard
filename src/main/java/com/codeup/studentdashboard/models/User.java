@@ -7,7 +7,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private Long id;
+    private int id;
 
     @Column(nullable=false, length = 45)
     private String username;
@@ -32,19 +32,18 @@ public class User {
         this.admin = copy.admin;
     }
 
-    public User(String username, String email, String password,
-                boolean isAdmin) {
+    public User(String username, String email, String password, boolean admin) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.admin = isAdmin;
+        this.admin = admin;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

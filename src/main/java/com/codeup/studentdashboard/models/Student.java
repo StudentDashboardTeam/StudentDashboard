@@ -5,6 +5,7 @@ import com.codeup.studentdashboard.models.student.HearAboutUs;
 import com.codeup.studentdashboard.models.student.PaymentOptions;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -82,7 +83,7 @@ public class Student {
     @JoinColumn(name = "hear_about_us")
     private HearAboutUs hearAboutUs;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_cohort",
             joinColumns = @JoinColumn(name = "student_id"),
@@ -90,32 +91,41 @@ public class Student {
     )
     private Cohort cohort;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "events",
+            joinColumns = @JoinColumn(name = "student")
+    )
+    @org.hibernate.annotations.ForeignKey(name = "none")
+    private List<Events> events;
+
     public Student() {}
 
-    public Student(Student copy) {
-        this.id = copy.id;
-        this.firstName = copy.firstName;
-        this.lastName = copy.lastName;
-        this.email = copy.email;
-        this.phone = copy.phone;
-        this.allowSms = copy.allowSms;
-        this.streetAddress = copy.streetAddress;
-        this.cityOfResidence = copy.cityOfResidence;
-        this.zipCode = copy.zipCode;
-        this.age = copy.age;
-        this.referrer = copy.referrer;
-        this.gender = copy.gender;
-        this.freeSchedule = copy.freeSchedule;
-        this.resumeFile = copy.resumeFile;
-        this.giBill = copy.giBill;
-        this.billboards = copy.billboards;
-        this.describe = copy.describe;
-        this.descOther = copy.descOther;
-        this.why = copy.why;
-        this.questions = copy.questions;
-        this.paymentOptions = copy.paymentOptions;
-        this.hearAboutUs = copy.hearAboutUs;
-        this.cohort = copy.cohort;
+    public Student(Student other) {
+        this.id = other.id;
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
+        this.email = other.email;
+        this.phone = other.phone;
+        this.allowSms = other.allowSms;
+        this.streetAddress = other.streetAddress;
+        this.cityOfResidence = other.cityOfResidence;
+        this.zipCode = other.zipCode;
+        this.age = other.age;
+        this.referrer = other.referrer;
+        this.gender = other.gender;
+        this.freeSchedule = other.freeSchedule;
+        this.resumeFile = other.resumeFile;
+        this.giBill = other.giBill;
+        this.billboards = other.billboards;
+        this.describe = other.describe;
+        this.descOther = other.descOther;
+        this.why = other.why;
+        this.questions = other.questions;
+        this.paymentOptions = other.paymentOptions;
+        this.hearAboutUs = other.hearAboutUs;
+        this.cohort = other.cohort;
+        this.events = other.events;
     }
 
     public Student(String firstName, String lastName, String email,
@@ -126,7 +136,7 @@ public class Student {
                    StudentBillboards billboards, StudentDescribe describe,
                    String descOther, String why, String questions,
                    PaymentOptions paymentOptions, HearAboutUs hearAboutUs,
-                   Cohort cohort) {
+                   Cohort cohort, List<Events> events) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -149,94 +159,183 @@ public class Student {
         this.paymentOptions = paymentOptions;
         this.hearAboutUs = hearAboutUs;
         this.cohort = cohort;
+        this.events = events;
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public boolean isAllowSms() {
         return allowSms;
+    }
+
+    public void setAllowSms(boolean allowSms) {
+        this.allowSms = allowSms;
     }
 
     public String getStreetAddress() {
         return streetAddress;
     }
 
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
     public String getCityOfResidence() {
         return cityOfResidence;
+    }
+
+    public void setCityOfResidence(String cityOfResidence) {
+        this.cityOfResidence = cityOfResidence;
     }
 
     public String getZipCode() {
         return zipCode;
     }
 
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
     public byte getAge() {
         return age;
+    }
+
+    public void setAge(byte age) {
+        this.age = age;
     }
 
     public String getReferrer() {
         return referrer;
     }
 
+    public void setReferrer(String referrer) {
+        this.referrer = referrer;
+    }
+
     public StudentGender getGender() {
         return gender;
+    }
+
+    public void setGender(StudentGender gender) {
+        this.gender = gender;
     }
 
     public boolean isFreeSchedule() {
         return freeSchedule;
     }
 
+    public void setFreeSchedule(boolean freeSchedule) {
+        this.freeSchedule = freeSchedule;
+    }
+
     public String getResumeFile() {
         return resumeFile;
+    }
+
+    public void setResumeFile(String resumeFile) {
+        this.resumeFile = resumeFile;
     }
 
     public boolean isGiBill() {
         return giBill;
     }
 
+    public void setGiBill(boolean giBill) {
+        this.giBill = giBill;
+    }
+
     public StudentBillboards getBillboards() {
         return billboards;
+    }
+
+    public void setBillboards(StudentBillboards billboards) {
+        this.billboards = billboards;
     }
 
     public StudentDescribe getDescribe() {
         return describe;
     }
 
+    public void setDescribe(StudentDescribe describe) {
+        this.describe = describe;
+    }
+
     public String getDescOther() {
         return descOther;
+    }
+
+    public void setDescOther(String descOther) {
+        this.descOther = descOther;
     }
 
     public String getWhy() {
         return why;
     }
 
+    public void setWhy(String why) {
+        this.why = why;
+    }
+
     public String getQuestions() {
         return questions;
+    }
+
+    public void setQuestions(String questions) {
+        this.questions = questions;
     }
 
     public PaymentOptions getPaymentOptions() {
         return paymentOptions;
     }
 
+    public void setPaymentOptions(PaymentOptions paymentOptions) {
+        this.paymentOptions = paymentOptions;
+    }
+
     public HearAboutUs getHearAboutUs() {
         return hearAboutUs;
+    }
+
+    public void setHearAboutUs(HearAboutUs hearAboutUs) {
+        this.hearAboutUs = hearAboutUs;
     }
 
     public Cohort getCohort() {
@@ -245,5 +344,13 @@ public class Student {
 
     public void setCohort(Cohort cohort) {
         this.cohort = cohort;
+    }
+
+    public List<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Events> events) {
+        this.events = events;
     }
 }

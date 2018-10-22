@@ -122,6 +122,13 @@
                 <h6 class="card-text" style="color:#74b566"><strong>Questions:</strong> <h5  th:text="${student.questions}"/></h6>
             </div>
         </div>
+        <div class="card border-success">
+            <div class="card-body">
+                <ul th:each="event : ${student.getEvents()}">
+                    <li><p th:text="${event.type}"></p></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 </div>

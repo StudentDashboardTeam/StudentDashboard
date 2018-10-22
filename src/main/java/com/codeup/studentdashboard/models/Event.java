@@ -8,33 +8,36 @@ public class Event {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    public Event(Event copy) {
-        this.id = copy.id;
-        this.name = copy.name;
+    public Event() {
+    }
+
+    public Event(Event other) {
+        this.id = other.id;
+        this.name = other.name;
     }
 
     public Event(String name) {
         this.name = name;
     }
 
-    public long id() {
+    public int getId() {
         return id;
     }
 
-    public void id(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public void name(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

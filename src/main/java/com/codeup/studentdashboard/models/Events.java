@@ -2,7 +2,6 @@ package com.codeup.studentdashboard.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "events")
@@ -16,31 +15,34 @@ public class Events {
     @JoinColumn(name = "type")
     private Event type;
 
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "administerer")
     private User user;
 
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "student")
     private Student student;
 
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 
-    @Column(name = "notes")
+    @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
 
     @Column(name = "score")
     private int score;
 
-    public Events(Events copy) {
-        this.id = copy.id;
-        this.type = copy.type;
-        this.user = copy.user;
-        this.student = copy.student;
-        this.date = copy.date;
-        this.notes = copy.notes;
-        this.score = copy.score;
+    public Events() {
+    }
+
+    public Events(Events other) {
+        this.id = other.id;
+        this.type = other.type;
+        this.user = other.user;
+        this.student = other.student;
+        this.date = other.date;
+        this.notes = other.notes;
+        this.score = other.score;
     }
 
     public Events(Event type, User user, Student student, LocalDateTime date,
