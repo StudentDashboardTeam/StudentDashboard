@@ -1,8 +1,9 @@
 {
+  "id": 135835,
   "num_rows": 100,
   "file_format": "sql",
-  "name": "student_info",
-  "table_name": "student_info",
+  "name": "student",
+  "table_name": "student",
   "include_create_sql": false,
   "columns": [
     {
@@ -153,15 +154,6 @@
       "type": "Number",
       "min": 1,
       "max": 100,
-      "decimals": 0,
-      "formula": ""
-    },
-    {
-      "name": "cohort_id",
-      "null_percentage": 0,
-      "type": "Number",
-      "min": 1,
-      "max": 10,
       "decimals": 0,
       "formula": ""
     },

@@ -1,8 +1,10 @@
-CREATE DATABASE IF NOT EXISTS student_dashboard_db;
+DROP DATABASE IF EXISTS student_dashboard_db;
 
+CREATE DATABASE IF NOT EXISTS student_dashboard_db;
 
 USE student_dashboard_db;
 
+SET FOREIGN_KEY_CHECKS = 0
 
 DROP TABLE IF EXISTS `events`;
 
@@ -46,7 +48,6 @@ CREATE TABLE `hear_about_us`
 PRIMARY KEY (`id`)
 );
 
-
 CREATE TABLE `payment_options`
 (
  `id`          INT unsigned NOT NULL AUTO_INCREMENT ,
@@ -58,7 +59,6 @@ CREATE TABLE `payment_options`
 
 PRIMARY KEY (`id`)
 );
-
 
 CREATE TABLE `cohort`
 (
@@ -125,10 +125,21 @@ KEY `HEAR_ABOUT_US` (`hear_about_us`),
 CONSTRAINT `HEAR_STUDENT` FOREIGN KEY `HEAR_ABOUT_US` (`hear_about_us`) REFERENCES `hear_about_us` (`id`)
 );
 
+CREATE TABLE `student_cohort`
+(
+ `cohort_id`  INT unsigned NOT NULL ,
+ `student_id` INT unsigned NOT NULL ,
+
+KEY `STUDENT` (`student_id`),
+CONSTRAINT `STUDENT_STUDENT_COHORT` FOREIGN KEY `STUDENT` (`student_id`) REFERENCES `student` (`id`),
+KEY `COHORT` (`cohort_id`),
+CONSTRAINT `COHORT_STUDENT_COHORT` FOREIGN KEY `COHORT` (`cohort_id`) REFERENCES `cohort` (`id`)
+);
+
 CREATE TABLE `events`
 (
- `id`          INT unsigned NOT NULL AUTO_INCREMENT ,
  `type`         INT unsigned NOT NULL ,
+ `id`           INT NOT NULL AUTO_INCREMENT ,
  `administerer` INT unsigned NOT NULL ,
  `student`      INT unsigned NOT NULL ,
  `date`         DATETIME NOT NULL ,
@@ -143,3 +154,5 @@ CONSTRAINT `USERS_EVENTS` FOREIGN KEY `ADMINISTERER` (`administerer`) REFERENCES
 KEY `TYPE` (`type`),
 CONSTRAINT `EVENT_EVENTS` FOREIGN KEY `TYPE` (`type`) REFERENCES `event` (`id`)
 );
+
+SET FOREIGN_KEY_CHECKS = 1
