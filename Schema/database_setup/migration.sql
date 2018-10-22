@@ -26,6 +26,7 @@ DROP TABLE IF EXISTS `event`;
 
 DROP TABLE IF EXISTS `users`;
 
+-- ************************************** `hear_about_us`
 
 CREATE TABLE `hear_about_us`
 (
@@ -48,17 +49,31 @@ CREATE TABLE `hear_about_us`
 PRIMARY KEY (`id`)
 );
 
+
+
+
+
+
+-- ************************************** `payment_options`
+
 CREATE TABLE `payment_options`
 (
  `id`          INT unsigned NOT NULL AUTO_INCREMENT ,
  `self`        BIT(1) ,
  `va_benefits` BIT(1) ,
  `loan`        BIT(1) ,
- `scholarship`       BIT(1) ,
+ `scholarship` BIT(1) ,
  `other`       BIT(1) ,
 
 PRIMARY KEY (`id`)
 );
+
+
+
+
+
+
+-- ************************************** `cohort`
 
 CREATE TABLE `cohort`
 (
@@ -71,6 +86,13 @@ CREATE TABLE `cohort`
 PRIMARY KEY (`id`)
 );
 
+
+
+
+
+
+-- ************************************** `event`
+
 CREATE TABLE `event`
 (
  `id`   INT unsigned NOT NULL AUTO_INCREMENT ,
@@ -78,6 +100,13 @@ CREATE TABLE `event`
 
 PRIMARY KEY (`id`)
 );
+
+
+
+
+
+
+-- ************************************** `users`
 
 CREATE TABLE `users`
 (
@@ -89,6 +118,13 @@ CREATE TABLE `users`
 
 PRIMARY KEY (`id`)
 );
+
+
+
+
+
+
+-- ************************************** `student`
 
 CREATE TABLE `student`
 (
@@ -125,16 +161,31 @@ KEY `HEAR_ABOUT_US` (`hear_about_us`),
 CONSTRAINT `HEAR_STUDENT` FOREIGN KEY `HEAR_ABOUT_US` (`hear_about_us`) REFERENCES `hear_about_us` (`id`)
 );
 
+
+
+
+
+
+-- ************************************** `student_cohort`
+
 CREATE TABLE `student_cohort`
 (
  `cohort_id`  INT unsigned NOT NULL ,
  `student_id` INT unsigned NOT NULL ,
 
-KEY `STUDENT` (`student_id`),
-CONSTRAINT `STUDENT_STUDENT_COHORT` FOREIGN KEY `STUDENT` (`student_id`) REFERENCES `student` (`id`),
-KEY `COHORT` (`cohort_id`),
-CONSTRAINT `COHORT_STUDENT_COHORT` FOREIGN KEY `COHORT` (`cohort_id`) REFERENCES `cohort` (`id`)
+UNIQUE KEY `UNIQUE_STUDENT` (`student_id`),
+KEY `STUDENT_ID` (`student_id`),
+CONSTRAINT `STUDENT_STUDENT_COHORT` FOREIGN KEY `STUDENT_ID` (`student_id`) REFERENCES `student` (`id`),
+KEY `COHORT_ID` (`cohort_id`),
+CONSTRAINT `COHORT_STUDENT_COHORT` FOREIGN KEY `COHORT_ID` (`cohort_id`) REFERENCES `cohort` (`id`)
 );
+
+
+
+
+
+
+-- ************************************** `events`
 
 CREATE TABLE `events`
 (
@@ -147,12 +198,18 @@ CREATE TABLE `events`
  `score`        INT ,
 
 PRIMARY KEY (`id`),
-KEY `STUDENT` (`student`),
-CONSTRAINT `STUDENT_EVENTS` FOREIGN KEY `STUDENT` (`student`) REFERENCES `student` (`id`),
+KEY `STUDENT_ID` (`student`),
+CONSTRAINT `STUDENT_EVENTS` FOREIGN KEY `STUDENT_ID` (`student`) REFERENCES `student` (`id`),
 KEY `ADMINISTERER` (`administerer`),
 CONSTRAINT `USERS_EVENTS` FOREIGN KEY `ADMINISTERER` (`administerer`) REFERENCES `users` (`id`),
 KEY `TYPE` (`type`),
 CONSTRAINT `EVENT_EVENTS` FOREIGN KEY `TYPE` (`type`) REFERENCES `event` (`id`)
 );
+
+
+
+
+
+
 
 SET FOREIGN_KEY_CHECKS = 1

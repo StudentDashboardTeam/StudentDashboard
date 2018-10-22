@@ -82,7 +82,12 @@ public class Student {
     @JoinColumn(name = "hear_about_us")
     private HearAboutUs hearAboutUs;
 
-    @ManyToOne
+    @OneToOne
+    @JoinTable(
+            name = "student_cohort",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "cohort_id")
+    )
     private Cohort cohort;
 
     public Student() {}
@@ -145,10 +150,6 @@ public class Student {
         this.hearAboutUs = hearAboutUs;
         this.cohort = cohort;
     }
-
-//    public Student getStudentById(Long id) {
-//
-//    }
 
     public long getId() {
         return id;
@@ -240,5 +241,9 @@ public class Student {
 
     public Cohort getCohort() {
         return cohort;
+    }
+
+    public void setCohort(Cohort cohort) {
+        this.cohort = cohort;
     }
 }
