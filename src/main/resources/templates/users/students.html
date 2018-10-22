@@ -17,7 +17,7 @@
     <nav th:replace="partials :: navbar" />
     <div class="container">
         <h1>Student QuickView</h1>
-        <h5 class="mb-4">Click on students first name to see a profile.</h5>
+        <!--<h5 class="mb-4">Click on students first name to see a profile.</h5>-->
         <table>
             <tr class="table-success">
                 <th scope="row">First Name</th>
@@ -27,15 +27,17 @@
                 <th scope="row" class="pl-4">Allow Texts</th>
                 <th scope="row">Address</th>
                 <th scope="row">City</th>
+                <th scope="row"></th>
             </tr>
             <tr style="font-size:15px" th:each="student : ${students}">
-                <td><a th:href="@{/users/students/{id}(id=${student.id})}"><p th:text="${student.firstName}" /></a></td>
+                <td><p th:text="${student.firstName}" /></td>
                 <td class="pl-4"><p th:text="${student.lastName}"/></td>
                 <td><p th:text="${student.email}"/></td>
                 <td><p th:text="${student.phone}"/></td>
                 <td class="px-5"><p th:text="${student.allowSms}"/></td>
                 <td><p th:text="${student.streetAddress}"/></td>
                 <td><p th:text="${student.cityOfResidence}"/></td>
+                <td><a th:href="@{/users/students/{id}(id=${student.id})}">View</a></td>
             </tr>
         </table>
 

@@ -29,7 +29,10 @@ public class StudentProfileController {
         model.addAttribute("student", currentStudent);
 
         Cohort studentCohort = currentStudent.getCohort();
-        model.addAttribute("cohort", studentCohort.toString());
+        if (studentCohort != null)
+            model.addAttribute("cohort", studentCohort.toString());
+        else
+            model.addAttribute("cohort",  null);
 
         // GRAB PAYMENT OPTIONS
         PaymentOptions po = currentStudent.getPaymentOptions();

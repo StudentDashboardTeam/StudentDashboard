@@ -8,7 +8,7 @@
     <nav th:replace="partials :: navbar" />
     <div class="container">
         <h1 class="mb-4">Student Profile Viewer</h1>
-        <div class="alert alert-success" th:if="${student.cohort.name != null}">
+        <div class="alert alert-success" th:if="${student.cohort != null}">
             <h4 class="mb-4">Current Cohort: <h4 th:text="${student.cohort.name}"/></h4>
         </div>
         <div class="alert alert-success" th:if="${cohort == null}">

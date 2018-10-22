@@ -57,6 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/users/studentProfile", // only authenticated users view and create students
                             "/users/cohortProfile",
                             "/users/cohorts",
+                            "/users/cohorts/**",
                             "/users/metrics"// only authenticated users can view metrics
                     )
                 .authenticated()

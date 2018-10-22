@@ -30,14 +30,17 @@ public class CohortProfileController {
         Cohort currentCohort = cohortRepository.findById(idNumber);
         model.addAttribute("cohort", currentCohort);
 
-        Iterable<Student> studentInCohort = studentRepository.findAll();
-        int studentCount = 0;
-            for (Student stu : studentInCohort) {
-                Cohort holder = stu.getCohort();
-                if (holder.getName().equalsIgnoreCase(currentCohort.getName())) {
-                    studentCount++;
-                }
-            }
+//        Iterable<Student> studentInCohort = studentRepository.findAll();
+//        int studentCount = 0;
+//        for (Student stu : studentInCohort) {
+//            Cohort co = stu.getCohort();
+//            if (co != null && co.getId() == currentCohort.getId()) {
+//                studentCount++;
+//            }
+//        }
+
+        int studentCount = currentCohort.getStudents().size();
+
         model.addAttribute("studentCount", studentCount);
 
         return "/users/cohortProfile";

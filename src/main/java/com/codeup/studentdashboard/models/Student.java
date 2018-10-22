@@ -82,7 +82,7 @@ public class Student {
     @JoinColumn(name = "hear_about_us")
     private HearAboutUs hearAboutUs;
 
-    @OneToOne
+    @ManyToOne
     private Cohort cohort;
 
     public Student() {}
