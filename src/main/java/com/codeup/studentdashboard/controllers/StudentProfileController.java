@@ -34,14 +34,6 @@ public class StudentProfileController {
         else
             model.addAttribute("cohort",  null);
 
-        // GRAB PAYMENT OPTIONS
-//        PaymentOption po = currentStudent.getPaymentOption();
-//            model.addAttribute("selfPay", po.isself());
-//            model.addAttribute("va", po.isva());
-//            model.addAttribute("loan", po.isloan());
-//            model.addAttribute("scholarship", po.isscholarship());
-//            model.addAttribute("other", po.isother());
-
         // GRAB GENDER
         String gender = new StudentGenderConverter().convertToDatabaseColumn(currentStudent.getGender());
 
@@ -57,23 +49,6 @@ public class StudentProfileController {
 
         model.addAttribute("description", description);
 
-        // GRAB 'HOW THEY HEARD ABOUT CODEUP'
-//        HearAboutUs heard = currentStudent.getHearAboutUs();
-//            model.addAttribute("socMedia", heard.istwitterFacebook());
-//            model.addAttribute("youtube", heard.isyoutube());
-//            model.addAttribute("muse", heard.ismuse());
-//            model.addAttribute("billboard", heard.isbillboard());
-//            model.addAttribute("tv", heard.istv());
-//            model.addAttribute("radio", heard.isradio());
-//            model.addAttribute("news", heard.isnews());
-//            model.addAttribute("web", heard.isweb());
-//            model.addAttribute("geekdom", heard.isgeekdom());
-//            model.addAttribute("friend", heard.isfriendFamily());
-//            model.addAttribute("employer", heard.isemployer());
-//            model.addAttribute("codeupStudent", heard.isstudent());
-//            model.addAttribute("jobFair", heard.isjobSchoolFair());
-//            model.addAttribute("otherHeard", heard.isother());
-
-                return "/users/studentProfile";
+        return "/users/studentProfile";
     }
 }
