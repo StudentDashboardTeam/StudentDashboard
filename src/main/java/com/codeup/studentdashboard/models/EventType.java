@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "event_type")
-public class Event {
+public class EventType {
 
     @Id
     @GeneratedValue
@@ -13,14 +13,14 @@ public class Event {
     @Column(name = "name", nullable = false)
     private String name;
 
-    public Event() {}
+    public EventType() {}
 
-    public Event(Event other) {
+    public EventType(EventType other) {
         this.id = other.id;
         this.name = other.name;
     }
 
-    public Event(String name) {
+    public EventType(String name) {
         this.name = name;
     }
 

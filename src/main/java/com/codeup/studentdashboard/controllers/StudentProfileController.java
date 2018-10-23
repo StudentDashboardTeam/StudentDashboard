@@ -3,6 +3,7 @@ package com.codeup.studentdashboard.controllers;
 //import com.codeup.studentdashboard.dao.repository.PaymentOptionsRepository;
 import com.codeup.studentdashboard.dao.repository.StudentRepository;
 import com.codeup.studentdashboard.models.Cohort;
+import com.codeup.studentdashboard.models.Events;
 import com.codeup.studentdashboard.models.Student;
 import com.codeup.studentdashboard.models.converters.StudentBillboardsConverter;
 import com.codeup.studentdashboard.models.converters.StudentDescribeConverter;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Controller
 public class StudentProfileController {
@@ -48,6 +51,12 @@ public class StudentProfileController {
         String description = new StudentDescribeConverter().convertToDatabaseColumn(currentStudent.getDescribe());
 
         model.addAttribute("description", description);
+
+        // GRAB EVENTS
+
+        List<Events> events = currentStudent.getEvents();
+
+        model.addAttribute("events", events);
 
         return "/users/studentProfile";
     }

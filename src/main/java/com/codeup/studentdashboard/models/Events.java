@@ -13,7 +13,7 @@ public class Events {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "event_type")
-    private Event type;
+    private EventType type;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
@@ -45,7 +45,7 @@ public class Events {
         this.score = other.score;
     }
 
-    public Events(Event type, User user, Student student, LocalDateTime date,
+    public Events(EventType type, User user, Student student, LocalDateTime date,
                   String notes, int score) {
         this.type = type;
         this.user = user;
@@ -63,11 +63,11 @@ public class Events {
         this.id = id;
     }
 
-    public Event getType() {
+    public EventType getType() {
         return type;
     }
 
-    public void setType(Event type) {
+    public void setType(EventType type) {
         this.type = type;
     }
 

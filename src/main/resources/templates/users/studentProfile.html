@@ -81,8 +81,8 @@
         </div>
         <div class="card border-success">
             <div class="card-body">
-                <ul th:each="event : ${student.events}">
-                    <li><span th:text="${event.id}" />:<span th:text="${event.type.name}"></span></li>
+                <ul th:each="event : ${events}">
+                    <li><span th:text="${event.id}" />:<span th:text="${event.score}"></span></li>
                 </ul>
             </div>
         </div>
