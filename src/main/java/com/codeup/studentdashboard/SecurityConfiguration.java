@@ -54,13 +54,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(
                             "/users/students",
                             "/users/students/**",
+                            "/users/applicants",
+                            "/users/studentEvents",
+                            "/users/studentEvents/**",
                             "/users/studentProfile",
                             "/users/cohortProfile",
                             "/users/cohorts",
                             "/users/cohorts/**",
                             "/users/metrics"// only authenticated users can view metrics
                     )
-                .authenticated()
-        ;
+                .authenticated();
+
     }
 }

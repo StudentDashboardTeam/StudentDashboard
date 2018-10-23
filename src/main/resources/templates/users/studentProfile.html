@@ -14,6 +14,9 @@
         <div class="alert alert-success" th:if="${cohort == null}">
             <h4 class="mb-4">Current Cohort: Unassigned</h4>
         </div>
+        <div class="alert alert-danger">
+            <h4 class="mb-4">Applicant/Student <a th:href="@{/users/studentEvents/{id}(id=${student.id})}">Status</a></h4>
+        </div>
         <div class="card border-success mb-3" style="max-width: 100%;">
             <div class="card-header"><h3 th:text="${student.firstName} + '  ' + ${student.lastName}"/></div>
             <div class="card-body">
@@ -79,14 +82,17 @@
                 <h6 class="card-text" style="color:#74b566"><strong>Questions:</strong> <h5  th:text="${student.questions}"/></h6>
             </div>
         </div>
-        <div class="card border-success">
-            <div class="card-body">
-                <ul th:each="event : ${events}">
-                    <li><span th:text="${event != null ? event.id : 'No Event Data'}" />:
-                        <span th:text="${event != null ? event.score != null ? event.score : 'No Score' : 'N/A'}"></span></li>
-                </ul>
-            </div>
-        </div>
+        <!--<div class="card border-success">-->
+            <!--<div class="card-header">Student Progress Events</div>-->
+            <!--<div class="card-body">-->
+                <!--<div class="card-title"></div>-->
+                <!--<ul th:each="event : ${events}">-->
+                    <!--<li><span th:text="${event != null ? event.type.name : 'No Event Data'}" />:-->
+                        <!--<span th:text="${event != null ? event.score != null ? event.score : 'No Score' : 'N/A'}"></span></li>-->
+                    <!--&lt;!&ndash;<li><span th:text="${event.name}"/>: </li>&ndash;&gt;-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 
 </div>

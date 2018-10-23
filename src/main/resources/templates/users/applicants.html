@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--This content is only shown to authenticated users.-->
+
+<!--User ID: <span th:text="${#authentication.principal.id}">defaultID</span>-->
+<!--Username: <span th:text="${#authentication.principal.username}">defaultUser</span>-->
+<!--Email: <span th:text="${#authentication.principal.email}">defaultEmail</span>-->
+<!--Admin: <span th:text="${#authentication.principal.admin}">defaultAdmin</span>-->
+<!--</div>-->
+
+<div sec:authorize="isAuthenticated()">
+
+    <nav th:replace="partials :: navbar" />
+    <div class="container">
+        <h1>Applicant QuickView</h1>
+        <!--<h5 class="mb-4">Click on students first name to see a profile.</h5>-->
+        <table>
+            <tr class="table-success">
+                <th scope="row">First Name</th>
+                <th scope="row" class="pl-4">Last Name</th>
+                <th scope="row">Email</th>
+                <th scope="row">Phone</th>
+                <th scope="row" class="pl-4">Allow Texts</th>
+                <th scope="row">Address</th>
+                <th scope="row">City</th>
+                <th scope="row"></th>
+            </tr>
+            <tr style="font-size:15px" th:each="applicant : ${applicants}">
+                <td><p th:text="${applicant.firstName}" /></td>
+                <td class="pl-4"><p th:text="${applicant.lastName}"/></td>
+                <td><p th:text="${applicant.email}"/></td>
+                <td><p th:text="${applicant.phone}"/></td>
+                <td class="px-5"><p th:text="${applicant.allowSms}"/></td>
+                <td><p th:text="${applicant.streetAddress}"/></td>
+                <td><p th:text="${applicant.cityOfResidence}"/></td>
+                <td><a th:href="@{/users/students/{id}(id=${applicant.id})}">View</a></td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>

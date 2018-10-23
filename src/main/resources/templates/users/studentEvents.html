@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+
+<div sec:authorize="isAuthenticated()">
+
+    <nav th:replace="partials :: navbar" />
+    <div class="container">
+        <h1 class="mb-4">Student/Applicant Events Viewer</h1>
+        <div class="card border-success">
+            <div class="card-header"><h5>Student Progress Events</h5></div>
+            <div class="card-body">
+                <div class="card-title">Completion Events and Relative Data</div>
+                <div th:each="event : ${studentEvents}">
+                    <div class="card border-success mb-4">
+                        <div class="card-header"><h5 th:text="${event != null ? event.type.name : 'No Event Data'}" /></div>
+                        <div class="card-body">
+                            <!--<div class="card-title"></div>-->
+                                <h6 class="card-text" style="color:#74b566"><strong>Event Score:</strong></h6>
+                                <h5 th:text="${event.score != null ? event.score : 'Not Completed'}" />
+                                <h6 class="card-text" style="color:#74b566"><strong>Event Date:</strong></h6>
+                                <h5 th:text="${event.date != null ? event.date : 'Not Completed'}"/>
+                                <h6 class="card-text" style="color:#74b566"><strong>Event Administerer:</strong></h6>
+                                <h5 th:text="${event.user != null ? event.user.username : 'Not Completed'}" />
+                                <h6 class="card-text" style="color:#74b566"><strong>Event Notes:</strong></h6>
+                                <h5 th:text="${event.notes != null ? event.notes : 'No Notes Exist' }" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
