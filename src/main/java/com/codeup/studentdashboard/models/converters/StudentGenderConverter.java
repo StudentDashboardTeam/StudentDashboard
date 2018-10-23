@@ -1,14 +1,14 @@
 package com.codeup.studentdashboard.models.converters;
 
-import com.codeup.studentdashboard.models.enums.String;
+import com.codeup.studentdashboard.models.enums.StudentGender;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
-public class StudentGenderConverter implements AttributeConverter<String, java.lang.String> {
+public class StudentGenderConverter implements AttributeConverter<StudentGender, java.lang.String> {
     @Override
-    public java.lang.String convertToDatabaseColumn(String studentGender) {
+    public java.lang.String convertToDatabaseColumn(StudentGender studentGender) {
         switch (studentGender) {
             case MALE:
                 return "MALE";
@@ -22,14 +22,14 @@ public class StudentGenderConverter implements AttributeConverter<String, java.l
     }
 
     @Override
-    public String convertToEntityAttribute(java.lang.String s) {
+    public StudentGender convertToEntityAttribute(java.lang.String s) {
         switch (s) {
             case "MALE":
-                return String.MALE;
+                return StudentGender.MALE;
             case "FEMALE":
-                return String.FEMALE;
+                return StudentGender.FEMALE;
             case "OTHER":
-                return String.OTHER;
+                return StudentGender.OTHER;
             default:
                 throw new IllegalArgumentException("Unknown" + s);
         }

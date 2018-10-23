@@ -1,5 +1,5 @@
 package com.codeup.studentdashboard.models.enums;
 
-public enum String {
+public enum StudentGender {
     FEMALE, MALE, OTHER
 }

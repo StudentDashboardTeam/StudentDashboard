@@ -1,7 +1,7 @@
 package com.codeup.studentdashboard.models;
 
 import com.codeup.studentdashboard.models.enums.*;
-import com.codeup.studentdashboard.models.enums.String;
+import com.codeup.studentdashboard.models.enums.StudentGender;
 import com.codeup.studentdashboard.models.student.HAUOption;
 import com.codeup.studentdashboard.models.student.PaymentOption;
 
@@ -48,7 +48,7 @@ public class Student {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "gender")
-    private String gender;
+    private StudentGender gender;
 
     @Column(name = "free_schedule", nullable = false)
     private boolean freeSchedule;
@@ -137,7 +137,7 @@ public class Student {
     public Student(java.lang.String firstName, java.lang.String lastName, java.lang.String email,
                    java.lang.String phone, boolean allowSms, java.lang.String streetAddress,
                    java.lang.String cityOfResidence, java.lang.String zipCode, byte age,
-                   java.lang.String referrer, String gender,
+                   java.lang.String referrer, StudentGender gender,
                    boolean freeSchedule, java.lang.String resumeFile, boolean giBill,
                    StudentBillboards billboards, StudentDescribe describe,
                    java.lang.String descOther, java.lang.String why, java.lang.String questions,
@@ -257,11 +257,11 @@ public class Student {
         this.referrer = referrer;
     }
 
-    public String getGender() {
+    public StudentGender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(StudentGender gender) {
         this.gender = gender;
     }
 
