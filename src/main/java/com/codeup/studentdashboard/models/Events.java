@@ -4,23 +4,23 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "events")
+@Table(name = "event")
 public class Events {
 
     @Id
     @GeneratedValue
     private long id;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "type")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "event_type")
     private Event type;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "administerer")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "student")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @Column(name = "date", nullable = false)
@@ -30,7 +30,7 @@ public class Events {
     private String notes;
 
     @Column(name = "score")
-    private int score;
+    private Integer score;
 
     public Events() {
     }

@@ -20,12 +20,9 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class CohortProfileController {
 
     private final CohortRepository cohortRepository;
-    private final StudentRepository studentRepository;
 
-
-    public CohortProfileController(CohortRepository cohortRepository, StudentRepository studentRepository) {
+    public CohortProfileController(CohortRepository cohortRepository) {
         this.cohortRepository = cohortRepository;
-        this.studentRepository = studentRepository;
     }
 
     @GetMapping("/users/cohorts/{id}")

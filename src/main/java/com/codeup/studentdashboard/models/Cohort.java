@@ -1,6 +1,5 @@
 package com.codeup.studentdashboard.models;
 import com.codeup.studentdashboard.models.enums.CohortType;
-import com.codeup.studentdashboard.models.enums.CohortTypeConverter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +11,7 @@ public class Cohort {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -54,11 +53,11 @@ public class Cohort {
         this.students = students;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

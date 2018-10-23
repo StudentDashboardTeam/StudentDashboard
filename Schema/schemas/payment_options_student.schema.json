@@ -1,0 +1,28 @@
+{
+  "id": 135904,
+  "num_rows": 500,
+  "file_format": "sql",
+  "name": "payment_options_student",
+  "table_name": "payment_options_student",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "student_id",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "payment_options_id",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 5,
+      "decimals": 0,
+      "formula": ""
+    }
+  ]
+}

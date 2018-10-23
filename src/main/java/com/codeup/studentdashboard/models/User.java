@@ -1,5 +1,6 @@
 package com.codeup.studentdashboard.models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +21,9 @@ public class User {
 
     @Column(name = "is_admin", nullable = false)
     private boolean admin;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Events> events;
 
     public User() {
     }

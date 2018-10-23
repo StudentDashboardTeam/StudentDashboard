@@ -22,7 +22,7 @@
                 <h6 class="card-text" style="color:#74b566"><strong>Phone Number:</strong> <h5  th:text="${student.phone}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>Allows Texts:</strong> <h5  th:text="${student.allowSms}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>Age:</strong> <h5  th:text="${student.age}"/></h6>
-                <h6 class="card-text" style="color:#74b566"><strong>Gender:</strong> <h5  th:text="${student.gender}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>Gender:</strong> <h5  th:text="${gender}"/></h6>
             </div>
         </div>
         <div class="card border-success mb-3" style="max-width: 100%;">
@@ -39,21 +39,9 @@
             <div class="card-body">
                 <h4 class="card-title">Application Profile</h4>
                 <h6 class="card-text" style="color:#74b566"><strong>Payment Options:</strong></h6>
-                <div th:if="${selfPay}">
-                    <p>Self Pay</p>
-                </div>
-                <div th:if="${va}">
-                    <p>VA</p>
-                </div>
-                <div th:if="${loan}">
-                    <p>Personal Loan</p>
-                </div>
-                <div th:if="${scholarship}">
-                    <p>Scholarship</p>
-                </div>
-                <div th:if="${other}">
-                    <p>Other</p>
-                </div>
+                <ul th:each="paymentOption : ${student.paymentOptions}" >
+                    <li><p th:text="${paymentOption.name}" /></li>
+                </ul>
                 <h6 class="card-text" style="color:#74b566"><strong>GI Bill:</strong></h6>
                 <div th:if="${student.giBill}">
                     <h5>Yes</h5>
@@ -73,49 +61,18 @@
                     <h5>No Resume Uploaded</h5>
                 </div>
                 <h6 class="card-text" style="color:#74b566"><strong>How They Heard About Codeup:</strong></h6>
+
+                <div th:each="hauOption : ${student.hauOptions}">
+                    <div>
+                        <p th:text="${hauOption.name}" />
+                    </div>
+                </div>
+
                 <div th:if="${socMedia}">
                     <p>Twitter / Facebook</p>
                 </div>
-                <div th:if="${youtube}">
-                    <p>YouTube</p>
-                </div>
-                <div th:if="${muse}">
-                    <p>The Muse</p>
-                </div>
-                <div th:if="${billboard}">
-                    <p>Codeup Billboard</p>
-                </div>
-                <div th:if="${tv}">
-                    <p>TV</p>
-                </div>
-                <div th:if="${radio}">
-                    <p>Radio</p>
-                </div>
-                <div th:if="${news}">
-                    <p>News</p>
-                </div>
-                <div th:if="${web}">
-                    <p>Web Search</p>
-                </div>
-                <div th:if="${geekdom}">
-                    <p>Geekdom</p>
-                </div>
-                <div th:if="${friend}">
-                    <p>Friend or Family</p>
-                </div>
-                <div th:if="${employer}">
-                    <p>Employer</p>
-                </div>
-                <div th:if="${codeupStudent}">
-                    <p>Codeup Student</p>
-                </div>
-                <div th:if="${jobFair}">
-                    <p>Job or School fair</p>
-                </div>
-                <div th:if="${otherHeard}">
-                    <p>Other</p>
-                </div>
-                <h6 class="card-text" style="color:#74b566"><strong>Have they seen billboards around town:</strong> <h5  th:text="${student.billboards}"/></h6>
+
+                <h6 class="card-text" style="color:#74b566"><strong>Have they seen billboards around town:</strong> <h5  th:text="${billboard}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>Best description of self:</strong> <h5  th:text="${description}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>Describe Other:</strong><h5  th:text="${student.descOther}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>Why They Want to Attend:</strong> <h5  th:text="${student.why}"/></h6>
@@ -124,8 +81,8 @@
         </div>
         <div class="card border-success">
             <div class="card-body">
-                <ul th:each="event : ${student.getEvents()}">
-                    <li><p th:text="${event.type}"></p></li>
+                <ul th:each="event : ${student.events}">
+                    <li><span th:text="${event.id}" />:<span th:text="${event.type.name}"></span></li>
                 </ul>
             </div>
         </div>

@@ -4,9 +4,9 @@ package com.codeup.studentdashboard.controllers;
 import com.codeup.studentdashboard.dao.repository.StudentRepository;
 import com.codeup.studentdashboard.models.Cohort;
 import com.codeup.studentdashboard.models.Student;
-import com.codeup.studentdashboard.models.enums.StudentDescribe;
-import com.codeup.studentdashboard.models.student.HearAboutUs;
-import com.codeup.studentdashboard.models.student.PaymentOptions;
+import com.codeup.studentdashboard.models.converters.StudentBillboardsConverter;
+import com.codeup.studentdashboard.models.converters.StudentDescribeConverter;
+import com.codeup.studentdashboard.models.converters.StudentGenderConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,47 +35,44 @@ public class StudentProfileController {
             model.addAttribute("cohort",  null);
 
         // GRAB PAYMENT OPTIONS
-        PaymentOptions po = currentStudent.getPaymentOptions();
-            model.addAttribute("selfPay", po.isself());
-            model.addAttribute("va", po.isva());
-            model.addAttribute("loan", po.isloan());
-            model.addAttribute("scholarship", po.isscholarship());
-            model.addAttribute("other", po.isother());
+//        PaymentOption po = currentStudent.getPaymentOption();
+//            model.addAttribute("selfPay", po.isself());
+//            model.addAttribute("va", po.isva());
+//            model.addAttribute("loan", po.isloan());
+//            model.addAttribute("scholarship", po.isscholarship());
+//            model.addAttribute("other", po.isother());
+
+        // GRAB GENDER
+        String gender = new StudentGenderConverter().convertToDatabaseColumn(currentStudent.getGender());
+
+        model.addAttribute("gender", gender);
+
+        // GRAB BILLBOARDS
+        String billboard = new StudentBillboardsConverter().convertToDatabaseColumn(currentStudent.getBillboards());
+
+        model.addAttribute("billboard", billboard);
 
         // GRAB DESCRIPTION OF SELF
-        StudentDescribe sd = currentStudent.getDescribe();
-            String desc = sd.toString();
-            String description = "";
+        String description = new StudentDescribeConverter().convertToDatabaseColumn(currentStudent.getDescribe());
 
-        if (desc.equalsIgnoreCase("VET_MIL")) {
-            description = "Transitioning Veteran or Active Military";
-        } else if (desc.equalsIgnoreCase("SERVICE")) {
-            description = "Currently works in the service industry and is looking for change";
-        } else if (desc.equalsIgnoreCase("SAME")) {
-            description = "Has been in the same career for five years and is looking for change";
-        } else if (desc.equalsIgnoreCase("COLLEGE")) {
-            description = "College student or graduate looking for a more hands-on learning experience";
-        } else if (desc.equalsIgnoreCase("HS")) {
-            description = "Recent high school graduate and looking for alternative options to college/university";
-        }
-            model.addAttribute("description", description);
+        model.addAttribute("description", description);
 
         // GRAB 'HOW THEY HEARD ABOUT CODEUP'
-        HearAboutUs heard = currentStudent.getHearAboutUs();
-            model.addAttribute("socMedia", heard.istwitterFacebook());
-            model.addAttribute("youtube", heard.isyoutube());
-            model.addAttribute("muse", heard.ismuse());
-            model.addAttribute("billboard", heard.isbillboard());
-            model.addAttribute("tv", heard.istv());
-            model.addAttribute("radio", heard.isradio());
-            model.addAttribute("news", heard.isnews());
-            model.addAttribute("web", heard.isweb());
-            model.addAttribute("geekdom", heard.isgeekdom());
-            model.addAttribute("friend", heard.isfriendFamily());
-            model.addAttribute("employer", heard.isemployer());
-            model.addAttribute("codeupStudent", heard.isstudent());
-            model.addAttribute("jobFair", heard.isjobSchoolFair());
-            model.addAttribute("otherHeard", heard.isother());
+//        HearAboutUs heard = currentStudent.getHearAboutUs();
+//            model.addAttribute("socMedia", heard.istwitterFacebook());
+//            model.addAttribute("youtube", heard.isyoutube());
+//            model.addAttribute("muse", heard.ismuse());
+//            model.addAttribute("billboard", heard.isbillboard());
+//            model.addAttribute("tv", heard.istv());
+//            model.addAttribute("radio", heard.isradio());
+//            model.addAttribute("news", heard.isnews());
+//            model.addAttribute("web", heard.isweb());
+//            model.addAttribute("geekdom", heard.isgeekdom());
+//            model.addAttribute("friend", heard.isfriendFamily());
+//            model.addAttribute("employer", heard.isemployer());
+//            model.addAttribute("codeupStudent", heard.isstudent());
+//            model.addAttribute("jobFair", heard.isjobSchoolFair());
+//            model.addAttribute("otherHeard", heard.isother());
 
                 return "/users/studentProfile";
     }

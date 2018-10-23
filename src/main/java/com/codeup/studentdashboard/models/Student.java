@@ -1,8 +1,9 @@
 package com.codeup.studentdashboard.models;
 
 import com.codeup.studentdashboard.models.enums.*;
-import com.codeup.studentdashboard.models.student.HearAboutUs;
-import com.codeup.studentdashboard.models.student.PaymentOptions;
+import com.codeup.studentdashboard.models.enums.String;
+import com.codeup.studentdashboard.models.student.HAUOption;
+import com.codeup.studentdashboard.models.student.PaymentOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,72 +17,82 @@ public class Student {
     private long id;
 
     @Column(name = "first_name", nullable = false)
-    private String firstName;
+    private java.lang.String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private String lastName;
+    private java.lang.String lastName;
 
     @Column(name = "email", nullable = false)
-    private String email;
+    private java.lang.String email;
 
     @Column(name = "phone", nullable = false)
-    private String phone;
+    private java.lang.String phone;
 
     @Column(name = "allow_sms", nullable = false)
     private boolean allowSms;
 
     @Column(name = "street_address", nullable = false)
-    private String streetAddress;
+    private java.lang.String streetAddress;
 
     @Column(name = "city_of_residence", nullable = false)
-    private String cityOfResidence;
+    private java.lang.String cityOfResidence;
 
     @Column(name = "zip_code", nullable = false)
-    private String zipCode;
+    private java.lang.String zipCode;
 
     @Column(name = "age", nullable = false)
     private byte age;
 
     @Column(name = "referrer")
-    private String referrer;
+    private java.lang.String referrer;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "gender")
-    @Convert(converter = StudentGenderConverter.class)
-    private StudentGender gender;
+    private String gender;
 
     @Column(name = "free_schedule", nullable = false)
     private boolean freeSchedule;
 
     @Column(name = "resume_file")
-    private String resumeFile;
+    private java.lang.String resumeFile;
 
     @Column(name = "gi_bill", nullable = false)
     private boolean giBill;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "billboards", nullable = false)
-    @Convert(converter = StudentBillboardsConverter.class)
     private StudentBillboards billboards;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "best_describes_you")
-    @Convert(converter = StudentDescribeConverter.class)
     private StudentDescribe describe;
 
-    @Column(name = "description_other")
-    private String descOther;
+    @Column(name = "description_other", columnDefinition = "TEXT")
+    private java.lang.String descOther;
 
-    @Column(name = "why", nullable = false)
-    private String why;
+    @Column(name = "why", nullable = false, columnDefinition = "TEXT")
+    private java.lang.String why;
 
-    @Column(name = "questions")
-    private String questions;
+    @Column(name = "questions", columnDefinition = "TEXT")
+    private java.lang.String questions;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "payment_options")
-    private PaymentOptions paymentOptions;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "payment_options_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "payment_options_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"payment_options_id", "student_id"})
+    )
+    private List<PaymentOption> paymentOptions;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "hear_about_us")
-    private HearAboutUs hearAboutUs;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "hau_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "hau_options_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"hau_options_id", "student_id"})
+    )
+    private List<HAUOption> hauOptions;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(
@@ -91,12 +102,7 @@ public class Student {
     )
     private Cohort cohort;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "events",
-            joinColumns = @JoinColumn(name = "student")
-    )
-    @org.hibernate.annotations.ForeignKey(name = "none")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
     private List<Events> events;
 
     public Student() {}
@@ -123,20 +129,21 @@ public class Student {
         this.why = other.why;
         this.questions = other.questions;
         this.paymentOptions = other.paymentOptions;
-        this.hearAboutUs = other.hearAboutUs;
+        this.hauOptions = other.hauOptions;
         this.cohort = other.cohort;
         this.events = other.events;
     }
 
-    public Student(String firstName, String lastName, String email,
-                   String phone, boolean allowSms, String streetAddress,
-                   String cityOfResidence, String zipCode, byte age,
-                   String referrer, StudentGender gender,
-                   boolean freeSchedule, String resumeFile, boolean giBill,
+    public Student(java.lang.String firstName, java.lang.String lastName, java.lang.String email,
+                   java.lang.String phone, boolean allowSms, java.lang.String streetAddress,
+                   java.lang.String cityOfResidence, java.lang.String zipCode, byte age,
+                   java.lang.String referrer, String gender,
+                   boolean freeSchedule, java.lang.String resumeFile, boolean giBill,
                    StudentBillboards billboards, StudentDescribe describe,
-                   String descOther, String why, String questions,
-                   PaymentOptions paymentOptions, HearAboutUs hearAboutUs,
-                   Cohort cohort, List<Events> events) {
+                   java.lang.String descOther, java.lang.String why, java.lang.String questions,
+                   List<PaymentOption> paymentOptions,
+                   List<HAUOption> hauOptions, Cohort cohort,
+                   List<Events> events) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -157,7 +164,7 @@ public class Student {
         this.why = why;
         this.questions = questions;
         this.paymentOptions = paymentOptions;
-        this.hearAboutUs = hearAboutUs;
+        this.hauOptions = hauOptions;
         this.cohort = cohort;
         this.events = events;
     }
@@ -170,35 +177,35 @@ public class Student {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public java.lang.String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(java.lang.String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public java.lang.String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(java.lang.String lastName) {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
-    public String getPhone() {
+    public java.lang.String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(java.lang.String phone) {
         this.phone = phone;
     }
 
@@ -210,27 +217,27 @@ public class Student {
         this.allowSms = allowSms;
     }
 
-    public String getStreetAddress() {
+    public java.lang.String getStreetAddress() {
         return streetAddress;
     }
 
-    public void setStreetAddress(String streetAddress) {
+    public void setStreetAddress(java.lang.String streetAddress) {
         this.streetAddress = streetAddress;
     }
 
-    public String getCityOfResidence() {
+    public java.lang.String getCityOfResidence() {
         return cityOfResidence;
     }
 
-    public void setCityOfResidence(String cityOfResidence) {
+    public void setCityOfResidence(java.lang.String cityOfResidence) {
         this.cityOfResidence = cityOfResidence;
     }
 
-    public String getZipCode() {
+    public java.lang.String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(java.lang.String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -242,19 +249,19 @@ public class Student {
         this.age = age;
     }
 
-    public String getReferrer() {
+    public java.lang.String getReferrer() {
         return referrer;
     }
 
-    public void setReferrer(String referrer) {
+    public void setReferrer(java.lang.String referrer) {
         this.referrer = referrer;
     }
 
-    public StudentGender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(StudentGender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -266,11 +273,11 @@ public class Student {
         this.freeSchedule = freeSchedule;
     }
 
-    public String getResumeFile() {
+    public java.lang.String getResumeFile() {
         return resumeFile;
     }
 
-    public void setResumeFile(String resumeFile) {
+    public void setResumeFile(java.lang.String resumeFile) {
         this.resumeFile = resumeFile;
     }
 
@@ -298,44 +305,44 @@ public class Student {
         this.describe = describe;
     }
 
-    public String getDescOther() {
+    public java.lang.String getDescOther() {
         return descOther;
     }
 
-    public void setDescOther(String descOther) {
+    public void setDescOther(java.lang.String descOther) {
         this.descOther = descOther;
     }
 
-    public String getWhy() {
+    public java.lang.String getWhy() {
         return why;
     }
 
-    public void setWhy(String why) {
+    public void setWhy(java.lang.String why) {
         this.why = why;
     }
 
-    public String getQuestions() {
+    public java.lang.String getQuestions() {
         return questions;
     }
 
-    public void setQuestions(String questions) {
+    public void setQuestions(java.lang.String questions) {
         this.questions = questions;
     }
 
-    public PaymentOptions getPaymentOptions() {
+    public List<PaymentOption> getPaymentOptions() {
         return paymentOptions;
     }
 
-    public void setPaymentOptions(PaymentOptions paymentOptions) {
+    public void setPaymentOptions(List<PaymentOption> paymentOptions) {
         this.paymentOptions = paymentOptions;
     }
 
-    public HearAboutUs getHearAboutUs() {
-        return hearAboutUs;
+    public List<HAUOption> getHauOptions() {
+        return hauOptions;
     }
 
-    public void setHearAboutUs(HearAboutUs hearAboutUs) {
-        this.hearAboutUs = hearAboutUs;
+    public void setHauOptions(List<HAUOption> hauOptions) {
+        this.hauOptions = hauOptions;
     }
 
     public Cohort getCohort() {

@@ -1,4 +1,6 @@
-package com.codeup.studentdashboard.models.enums;
+package com.codeup.studentdashboard.models.converters;
+
+import com.codeup.studentdashboard.models.enums.CohortType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
