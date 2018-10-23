@@ -35,18 +35,18 @@ public class Events {
     public Events() {
     }
 
-    public Events(Events other) {
-        this.id = other.id;
-        this.type = other.type;
-        this.user = other.user;
-        this.student = other.student;
-        this.date = other.date;
-        this.notes = other.notes;
-        this.score = other.score;
+    public Events(Events copy) {
+        this.id = copy.id;
+        this.type = copy.type;
+        this.user = copy.user;
+        this.student = copy.student;
+        this.date = copy.date;
+        this.notes = copy.notes;
+        this.score = copy.score;
     }
 
-    public Events(EventType type, User user, Student student, LocalDateTime date,
-                  String notes, int score) {
+    public Events(EventType type, User user, Student student,
+                  LocalDateTime date, String notes, Integer score) {
         this.type = type;
         this.user = user;
         this.student = student;
@@ -103,11 +103,11 @@ public class Events {
         this.notes = notes;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }

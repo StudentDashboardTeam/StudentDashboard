@@ -82,7 +82,8 @@
         <div class="card border-success">
             <div class="card-body">
                 <ul th:each="event : ${events}">
-                    <li><span th:text="${event.id}" />:<span th:text="${event.score}"></span></li>
+                    <li><span th:text="${event != null ? event.id : 'No Event Data'}" />:
+                        <span th:text="${event != null ? event.score != null ? event.score : 'No Score' : 'N/A'}"></span></li>
                 </ul>
             </div>
         </div>
