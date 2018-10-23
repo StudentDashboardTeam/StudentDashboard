@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head" />
+<body>
+
+<div sec:authorize="isAuthenticated()">
+
+    <nav th:replace="partials :: navbar" />
+    <div class="container">
+        <h1 class="mb-4">Student Profile Viewer</h1>
+        <div class="alert alert-success" th:if="${student.cohort != null}">
+            <h4 class="mb-4">Current Cohort: <h4 th:text="${student.cohort.name}"/></h4>
+        </div>
+        <div class="alert alert-success" th:if="${cohort == null}">
+            <h4 class="mb-4">Current Cohort: Unassigned</h4>
+        </div>
+        <div class="alert alert-danger">
+            <h4 class="mb-4">Applicant/Student <a href="@{/users/studentEvents/{id}(id=${student.id})}">Status</a></h4>
+        </div>
+<body>
+
+</body>
+</html>
