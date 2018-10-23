@@ -1,0 +1,28 @@
+{
+  "id": 135902,
+  "num_rows": 500,
+  "file_format": "sql",
+  "name": "hau_student",
+  "table_name": "hau_student",
+  "include_create_sql": false,
+  "columns": [
+    {
+      "name": "student_id",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 100,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "hau_options_id",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 14,
+      "decimals": 0,
+      "formula": ""
+    }
+  ]
+}

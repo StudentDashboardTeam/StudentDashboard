@@ -1,7 +1,11 @@
-package com.codeup.studentdashboard.models.enums;
+package com.codeup.studentdashboard.models.converters;
+
+import com.codeup.studentdashboard.models.enums.StudentBillboards;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
+@Converter(autoApply = true)
 public class StudentBillboardsConverter implements AttributeConverter<StudentBillboards, String> {
     @Override
     public String convertToDatabaseColumn(StudentBillboards studentBillboards) {
@@ -10,7 +14,7 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
                 return "YES";
             case NO:
                 return "NO";
-            case DONT_KNOW:
+            case DONT_REMEMBER:
                 return "DON'T REMEMBER";
             default:
                 throw new IllegalArgumentException("Unknown" + studentBillboards);
@@ -25,7 +29,7 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
             case "NO":
                 return StudentBillboards.NO;
             case "DON'T REMEMBER":
-                return StudentBillboards.DONT_KNOW;
+                return StudentBillboards.DONT_REMEMBER;
             default:
                 throw new IllegalArgumentException("Unknown" + s);
         }

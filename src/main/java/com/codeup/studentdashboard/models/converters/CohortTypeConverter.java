@@ -1,9 +1,11 @@
-package com.codeup.studentdashboard.models.enums;
+package com.codeup.studentdashboard.models.converters;
+
+import com.codeup.studentdashboard.models.enums.CohortType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-@Converter
+@Converter(autoApply = true)
 public class CohortTypeConverter implements AttributeConverter<CohortType, String> {
 
     @Override

@@ -1,10 +1,14 @@
-package com.codeup.studentdashboard.models.enums;
+package com.codeup.studentdashboard.models.converters;
+
+import com.codeup.studentdashboard.models.enums.StudentGender;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
-public class StudentGenderConverter implements AttributeConverter<StudentGender, String> {
+@Converter(autoApply = true)
+public class StudentGenderConverter implements AttributeConverter<StudentGender, java.lang.String> {
     @Override
-    public String convertToDatabaseColumn(StudentGender studentGender) {
+    public java.lang.String convertToDatabaseColumn(StudentGender studentGender) {
         switch (studentGender) {
             case MALE:
                 return "MALE";
@@ -18,7 +22,7 @@ public class StudentGenderConverter implements AttributeConverter<StudentGender,
     }
 
     @Override
-    public StudentGender convertToEntityAttribute(String s) {
+    public StudentGender convertToEntityAttribute(java.lang.String s) {
         switch (s) {
             case "MALE":
                 return StudentGender.MALE;

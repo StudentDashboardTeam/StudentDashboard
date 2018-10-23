@@ -1,34 +1,35 @@
-package com.codeup.studentdashboard.models;
+package com.codeup.studentdashboard.models.student;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "event_type")
-public class Event {
+@Table(name = "hau_options")
+public class HAUOption {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    public Event() {}
-
-    public Event(Event other) {
-        this.id = other.id;
-        this.name = other.name;
+    public HAUOption() {
     }
 
-    public Event(String name) {
+    public HAUOption(HAUOption copy) {
+        this.id = copy.id;
+        this.name = copy.name;
+    }
+
+    public HAUOption(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

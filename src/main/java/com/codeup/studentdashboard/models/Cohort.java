@@ -1,6 +1,5 @@
 package com.codeup.studentdashboard.models;
 import com.codeup.studentdashboard.models.enums.CohortType;
-import com.codeup.studentdashboard.models.enums.CohortTypeConverter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,8 +9,9 @@ import java.util.List;
 @Table(name = "cohort")
 public class Cohort {
 
-    @Id @GeneratedValue
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -22,11 +22,11 @@ public class Cohort {
     @Column(nullable = false)
     private LocalDate endDate;
 
-    @Column(nullable = false)
-    @Convert(converter = CohortTypeConverter.class)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "enum('WEB','DATA')")
     private CohortType type;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_cohort",
             joinColumns = @JoinColumn(name = "cohort_id"),
@@ -53,11 +53,11 @@ public class Cohort {
         this.students = students;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -85,6 +85,8 @@ public class Cohort {
         this.endDate = endDate;
     }
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     public CohortType getType() {
         return type;
     }
