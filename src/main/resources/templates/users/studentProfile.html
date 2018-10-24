@@ -17,7 +17,7 @@
         </div>
         <h4>Applicant's Progress: </h4><h5><span th:text="${bProgress}"/>% Complete</h5>
         <div class="progress" style="height:20px">
-            <div class="progress-bar bg-info" role="progressbar" th:style="'width:' + ${bProgress} + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-success" role="progressbar" th:style="'width:' + ${bProgress} + '%'" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="alert alert-danger mt-4">
             <h4 class="mb-4">Applicant/Student <a th:href="@{/users/studentEvents/{id}(id=${student.id})}">Events</a></h4>
