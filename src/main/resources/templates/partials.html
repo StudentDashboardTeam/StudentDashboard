@@ -31,6 +31,9 @@
                         <a class="nav-link" href="/users/students">Students</a>
                 </li>
                 <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a class="nav-link" href="/users/applicants">Applicants</a>
+                </li>
+                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/users/cohorts">Cohorts</a>
                 </li>
             </ul>

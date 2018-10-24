@@ -55,8 +55,15 @@ public class StudentProfileController {
         // GRAB EVENTS
 
         List<Events> events = currentStudent.getEvents();
-
+        for (Events e : events) {
+            System.out.println(e.getType().getName());
+        }
         model.addAttribute("events", events);
+
+
+
+
+
 
         return "/users/studentProfile";
     }
