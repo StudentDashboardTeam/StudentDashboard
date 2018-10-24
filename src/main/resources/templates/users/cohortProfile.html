@@ -5,10 +5,14 @@
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
-    <div class="container">
+
+    <div class="container mt-5">
         <h1 class="mb-4">Cohort Profile Viewer</h1>
         <div class="card border-success mb-3" style="max-width: 100%;">
-            <div class="card-header"><h3 th:text="${cohort.name}"/></div>
+            <div class="card-header d-flex justify-content-between">
+                <h3 th:text="${cohort.name}"/>
+                <h4 th:text="${cohort.type}"></h4>
+            </div>
             <div class="card-body">
                 <h4 class="card-title">Cohort Information</h4>
                 <h6 class="card-text" style="color:#74b566"><strong>Days until start of Cohort:</strong></h6>
@@ -22,7 +26,7 @@
                 <h6 class="card-text" style="color:#74b566"><strong>Students in cohort</strong></h6>
                 <div th:each="student : ${studentsAssigned}">
                     <!--<a th:href="@{/users/students/{id}(id=${student.id})}">View</a>-->
-                    <h6><a class="text-white" th:href="@{/users/students/{id}(id=${student.id})}" th:text="${student.firstName + ' ' + student.lastName}"></a></h6>
+                    <h6><a class="badge badge-pill badge-light" th:href="@{/users/students/{id}(id=${student.id})}" th:text="${student.firstName + ' ' + student.lastName}"></a></h6>
                 </div>
                 <h6 class="card-text" style="color:#74b566"><strong>Start Date:</strong> <h5  th:text="${cohort.startDate}"/></h6>
                 <h6 class="card-text" style="color:#74b566"><strong>End Date:</strong> <h5  th:text="${cohort.endDate}"/></h6>

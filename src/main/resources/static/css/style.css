@@ -1,3 +1,47 @@
 .hoverCursor {
     cursor: pointer;
 }
+
+#logout {
+    font-size: 0.765625rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.apply {
+    font-family: "Libre Baskerville",serif;
+}
+
+.apply .navbar {
+    background-color: #e8e8e8 !important;
+}
+
+.navbar-brand img {
+    width: 169px;
+}
+
+.apply .card-header {
+    background-color: initial;
+}
+
+.apply-header {
+    color: hsl(90,61%,25%);
+}
+
+.apply h1 {
+    font-size: 245%;
+    letter-spacing: -0.075em;
+    line-height: 1;
+    font-weight: 300;
+    font-style: normal;
+    text-transform: none;
+}
+
+.apply h3 {
+    font-size: 228.5%;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    text-transform: none;
+}

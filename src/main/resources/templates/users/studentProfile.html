@@ -6,7 +6,8 @@
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
-    <div class="container">
+
+    <div class="container mt-5">
         <h1 class="mb-4">Student Profile Viewer</h1>
         <div class="alert alert-success" th:if="${student.cohort != null}">
             <h4 class="mb-4">Current Cohort: <h4 th:text="${student.cohort.name}"/></h4>
@@ -47,24 +48,26 @@
                 </ul>
                 <h6 class="card-text" style="color:#74b566"><strong>GI Bill:</strong></h6>
                 <div th:if="${student.giBill}">
-                    <h5>Yes</h5>
+                    <p>Yes</p>
                 </div>
                 <div th:if="${!student.giBill}">
-                    <h5>No</h5>
+                    <p>No</p>
                 </div>
                 <h6 class="card-text" style="color:#74b566"><strong>Free Schedule:</strong></h6>
                 <div th:if="${student.freeSchedule}">
-                    <h5>Yes</h5>
+                    <p>Yes</p>
                 </div>
                 <div th:if="${!student.freeSchedule}">
-                    <h5>No</h5>
+                    <p>No</p>
                 </div>
-                <h6 class="card-text" style="color:#74b566"><strong>Resume File:</strong> <h6  th:text="${student.resumeFile}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>Resume File:</strong></h6>
+                <div th:if="${student.resumeFile != null}">
+                    <p th:text="${student.resumeFile}"></p>
+                </div>
                 <div th:if="${student.resumeFile == null}">
-                    <h5>No Resume Uploaded</h5>
+                    <p>No Resume Uploaded</p>
                 </div>
                 <h6 class="card-text" style="color:#74b566"><strong>How They Heard About Codeup:</strong></h6>
-
                 <div th:each="hauOption : ${student.hauOptions}">
                     <div>
                         <p th:text="${hauOption.name}" />
@@ -75,11 +78,21 @@
                     <p>Twitter / Facebook</p>
                 </div>
 
-                <h6 class="card-text" style="color:#74b566"><strong>Have they seen billboards around town:</strong> <h5  th:text="${billboard}"/></h6>
-                <h6 class="card-text" style="color:#74b566"><strong>Best description of self:</strong> <h5  th:text="${description}"/></h6>
-                <h6 class="card-text" style="color:#74b566"><strong>Describe Other:</strong><h5  th:text="${student.descOther}"/></h6>
-                <h6 class="card-text" style="color:#74b566"><strong>Why They Want to Attend:</strong> <h5  th:text="${student.why}"/></h6>
-                <h6 class="card-text" style="color:#74b566"><strong>Questions:</strong> <h5  th:text="${student.questions}"/></h6>
+                <h6 class="card-text" style="color:#74b566"><strong>Have they seen billboards around town:</strong></h6>
+                <p th:text="${billboard}"></p>
+
+                <h6 class="card-text" style="color:#74b566"><strong>Best description of self:</strong></h6>
+                <p th:text="${description}"></p>
+
+                <h6 class="card-text" style="color:#74b566"><strong>Describe Other:</strong></h6>
+                <p th:text="${student.descOther}"></p>
+
+                <h6 class="card-text" style="color:#74b566"><strong>Why They Want to Attend:</strong></h6>
+                <p th:text="${student.why}"></p>
+
+                <h6 class="card-text" style="color:#74b566"><strong>Questions:</strong></h6>
+                <p th:text="${student.questions}"></p>
+
             </div>
         </div>
         <!--<div class="card border-success">-->
