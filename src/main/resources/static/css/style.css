@@ -197,11 +197,6 @@
     padding: 0;
 }
 
-.apply .info-input {
-    max-width: 500px;
-    width: 90%;
-}
-
 .apply .info-input select, input {
     height: 40px;
 }
