@@ -1,7 +1,10 @@
 package com.codeup.studentdashboard.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "event")
@@ -11,11 +14,11 @@ public class Events {
     @GeneratedValue
     private long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "event_type")
     private EventType type;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -24,7 +27,8 @@ public class Events {
     private Student student;
 
     @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private Date date;
 
     @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
@@ -46,7 +50,7 @@ public class Events {
     }
 
     public Events(EventType type, User user, Student student,
-                  LocalDateTime date, String notes, Integer score) {
+                  Date date, String notes, Integer score) {
         this.type = type;
         this.user = user;
         this.student = student;
@@ -87,11 +91,11 @@ public class Events {
         this.student = student;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
