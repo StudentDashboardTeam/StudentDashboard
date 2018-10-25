@@ -12,7 +12,7 @@
     <!--Admin: <span th:text="${#authentication.principal.admin}">defaultAdmin</span>-->
 <!--</div>-->
 
-// first name, last name, email, phone, gender, giBIll, referrer, resumeFile, city, questions
+<!--first name, last name, email, phone, gender, giBIll, referrer, resumeFile, city, questions-->
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
@@ -28,7 +28,8 @@
                 <th scope="col" onclick="sortTable(3)">Phone</th>
                 <th scope="col" onclick="sortTable(4)">Gender</th>
                 <th scope="col" onclick="sortTable(5)">GI Bill</th>
-                <th scope="col" onclick="sortTable(6)">City</th>
+                <th scope="col" onclick="sortTable(6)">City of Residence</th>
+                <th scope="col" onclick="sortTable(7)">Last Event</th>
                 <th scope="col"></th>
             </tr>
             <tr style="font-size:15px" th:each="student : ${students}">
@@ -47,6 +48,7 @@
                 <td th:text="${student.gender.toString().charAt(0)}"></td>
                 <td th:text="${student.giBill}"></td>
                 <td th:text="${student.cityOfResidence}"></td>
+                <td th:text="${student.events.get(0).id}"></td>
                 <td><a th:href="@{/users/students/{id}(id=${student.id})}">View</a></td>
             </tr>
         </table>
