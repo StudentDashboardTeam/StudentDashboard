@@ -11,11 +11,11 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
     public String convertToDatabaseColumn(StudentBillboards studentBillboards) {
         switch (studentBillboards) {
             case YES:
-                return "YES";
+                return "Yes";
             case NO:
-                return "NO";
+                return "No";
             case DONT_REMEMBER:
-                return "DON'T REMEMBER";
+                return "Don't remember";
             default:
                 throw new IllegalArgumentException("Unknown" + studentBillboards);
         }
@@ -24,11 +24,11 @@ public class StudentBillboardsConverter implements AttributeConverter<StudentBil
     @Override
     public StudentBillboards convertToEntityAttribute(String s) {
         switch (s) {
-            case "YES":
+            case "Yes":
                 return StudentBillboards.YES;
-            case "NO":
+            case "No":
                 return StudentBillboards.NO;
-            case "DON'T REMEMBER":
+            case "Don't remember":
                 return StudentBillboards.DONT_REMEMBER;
             default:
                 throw new IllegalArgumentException("Unknown" + s);

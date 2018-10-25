@@ -11,11 +11,11 @@ public class StudentGenderConverter implements AttributeConverter<StudentGender,
     public java.lang.String convertToDatabaseColumn(StudentGender studentGender) {
         switch (studentGender) {
             case MALE:
-                return "MALE";
+                return "Male";
             case FEMALE:
-                return "FEMALE";
+                return "Female";
             case OTHER:
-                return "OTHER";
+                return "Other";
             default:
                 throw new IllegalArgumentException("Unknown" + studentGender);
         }
@@ -24,11 +24,11 @@ public class StudentGenderConverter implements AttributeConverter<StudentGender,
     @Override
     public StudentGender convertToEntityAttribute(java.lang.String s) {
         switch (s) {
-            case "MALE":
+            case "Male":
                 return StudentGender.MALE;
-            case "FEMALE":
+            case "Female":
                 return StudentGender.FEMALE;
-            case "OTHER":
+            case "Other":
                 return StudentGender.OTHER;
             default:
                 throw new IllegalArgumentException("Unknown" + s);

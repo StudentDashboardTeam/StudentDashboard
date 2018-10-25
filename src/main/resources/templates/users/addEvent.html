@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials :: head" />
 <body>
-
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
@@ -12,58 +11,48 @@
         <div class="card border-info mb-3" style="max-width: 20rem;">
             <div class="card-header">Add Event</div>
             <div class="card-body">
-                <!--<h4 class="card-title">Info card title</h4>-->
                 <h4></h4>
+            <form method="post" th:action="@{/users/addEvent}" th:object="${event}">
                 <div class="form-group">
                     <label for="eventName">Event Name:</label>
-                    <select class="form-control" id="eventName" name="eventName">
-                        <option>Applied</option>
-                        <option>Phone Interview Scheduled</option>
-                        <option>Phone Interview</option>
-                        <option>Tour Scheduled</option>
-                        <option>Tour</option>
-                        <option>Problem Solving Challenge</option>
-                        <option>Command Line Review Assigned</option>
-                        <option>Command Line Review Completed</option>
-                        <option>Behaviour Interview Scheduled</option>
-                        <option>Behaviour Interview</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="administerer">Administerer</label>
-                    <select class="form-control" id="administerer" name="administerer">
-                        <option th:each="user : ${users}"
-                                th:value="${user.username}"
-                                th:utext="${user.username}">
+                    <select class="custom-select" id="eventName" th:field="*{type.name}">
+                        <option th:each="event : ${eventTypes}"
+                                th:value="${event.id}"
+                                th:utext="${event.name}">
                         </option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="eventName">Event Name:</label>
-                    <select class="form-control" id="eventName" name="eventName">
-                        <option>Applied</option>
-                        <option>Phone Interview Scheduled</option>
-                        <option>Phone Interview</option>
-                        <option>Tour Scheduled</option>
-                        <option>Tour</option>
-                        <option>Problem Solving Challenge</option>
-                        <option>Command Line Review Assigned</option>
-                        <option>Command Line Review Completed</option>
-                        <option>Behaviour Interview Scheduled</option>
-                        <option>Behaviour Interview</option>
-                    </select>
+                <label for="datepicker">Event Date:</label>
+                <input type="date" id="datepicker" th:field="*{date}" width="276" />
                 </div>
                 <div class="form-group">
                     <label for="grade">Grade (if applicable):</label>
-                    <input id="grade" name="grade" type="number" placeholder="100" min="0" max="100" value="100"/>
+                    <input id="grade" name="grade" th:field="*{score}" type="number" placeholder="100" min="0" max="100" value="100"/>
                 </div>
                 <div class="form-group">
-                    <label for="exampleTextarea">Example textarea</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    <label for="notes">Event Notes</label>
+                    <textarea class="form-control" id="notes" th:field="*{notes}" rows="5"></textarea>
                 </div>
+
+                <!--HIDE THIS PLEASE-->
+
+                <input th:field="*{student.id}" th:value="${student.id}"/>
+
+                <!--HIDE THIS PLEASE-->
+
+                <button type="submit">Create Event</button>
+
+            </form>
                 </div>
             </div>
         </div>
-    </div>
-    </body>
+</div>
+
+<script>
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+</script>
+</body>
 </html>
