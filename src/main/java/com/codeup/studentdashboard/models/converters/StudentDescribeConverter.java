@@ -11,15 +11,15 @@ public class StudentDescribeConverter implements AttributeConverter<StudentDescr
     public String convertToDatabaseColumn(StudentDescribe studentDescribe) {
         switch (studentDescribe) {
             case VET_MIL:
-                return "I AM A TRANSITIONING VETERAN OR ACTIVE MILITARY.";
+                return "I am a transitioning Veteran or Active Military.";
             case SERVICE:
-                return "I CURRENTLY WORK IN THE SERVICE INDUSTRY AND LOOKING FOR A CAREER CHANGE.";
+                return "I currently work in the service industry and looking for a career change.";
             case SAME:
-                return "I HAVE BEEN IN THE SAME CAREER FOR OVER 5 YEARS AND LOOKING FOR A CAREER CHANGE.";
+                return "I have been in the same career for over 5 years and looking for a career change.";
             case HS:
-                return "I AM A RECENT HIGH SCHOOL GRADUATE AND LOOKING FOR ALTERNATIVE OPTIONS TO A COLLEGE/UNIVERSITY.";
+                return "I am a recent high school graduate and looking for alternative options to a college/university.";
             case COLLEGE:
-                return "I AM A RECENT COLLEGE GRADUATE.";
+                return "I am a recent college graduate.";
             default:
                 throw new IllegalArgumentException("Unknown" + studentDescribe);
         }
@@ -28,15 +28,15 @@ public class StudentDescribeConverter implements AttributeConverter<StudentDescr
     @Override
     public StudentDescribe convertToEntityAttribute(String s) {
         switch (s) {
-            case "I AM A TRANSITIONING VETERAN OR ACTIVE MILITARY.":
+            case "I am a transitioning Veteran or Active Military.":
                 return StudentDescribe.VET_MIL;
-            case "I CURRENTLY WORK IN THE SERVICE INDUSTRY AND LOOKING FOR A CAREER CHANGE.":
+            case "I currently work in the service industry and looking for a career change.":
                 return StudentDescribe.SERVICE;
-            case "I HAVE BEEN IN THE SAME CAREER FOR OVER 5 YEARS AND LOOKING FOR A CAREER CHANGE.":
+            case "I have been in the same career for over 5 years and looking for a career change.":
                 return StudentDescribe.SAME;
-            case "I AM A RECENT HIGH SCHOOL GRADUATE AND LOOKING FOR ALTERNATIVE OPTIONS TO A COLLEGE/UNIVERSITY.":
+            case "I am a recent high school graduate and looking for alternative options to a college/university.":
                 return StudentDescribe.HS;
-            case "I AM A RECENT COLLEGE GRADUATE.":
+            case "I am a recent college graduate.":
                 return StudentDescribe.COLLEGE;
             default:
                 throw new IllegalArgumentException("Unknown" + s);
