@@ -10,4 +10,5 @@ public interface StudentRepository extends CrudRepository<Student, Long> {
 
     @Query("from Student s where s.id=?1")
     Student findById(Long id);
+
 }
