@@ -2,12 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials :: head" />
 <body>
-
+<nav th:replace="partials :: navbar" />
 <div sec:authorize="isAuthenticated()">
-
-    <nav th:replace="partials :: navbar" />
     <div class="container">
-        <h1 class="mb-4">Student/Applicant Events Viewer</h1>
+        <h1 class="mb-4 mt-5">Student/Applicant Events Viewer</h1>
+        <a th:href="@{/users/addEvent/{id}(id=${student.id})}">Add Event</a>
         <div class="card border-success">
             <div class="card-header"><h5>Student Progress Events</h5></div>
             <div class="card-body">

@@ -7,7 +7,8 @@
 
     <nav th:replace="partials :: navbar" />
     <div class="container">
-        <h1 class="mb-4">Student Profile Viewer</h1>
+        <h1 class="mb-4 mt-5">Student Profile Viewer</h1>
+        <a th:href="@{/users/addEvent/{id}(id=${student.id})"
         <div class="alert alert-success" th:if="${student.cohort != null}">
             <h4 class="mb-4">Current Cohort: <h4 th:text="${student.cohort.name}"/></h4>
         </div>

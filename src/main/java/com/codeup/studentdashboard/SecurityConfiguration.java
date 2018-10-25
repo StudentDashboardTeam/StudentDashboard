@@ -55,6 +55,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/users/students",
                             "/users/students/**",
                             "/users/applicants",
+                            "/users/addEvent",
+                            "/users/addEvent/**",
                             "/users/studentEvents",
                             "/users/studentEvents/**",
                             "/users/studentProfile",
