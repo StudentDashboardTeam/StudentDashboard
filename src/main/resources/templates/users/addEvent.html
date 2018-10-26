@@ -35,11 +35,7 @@
                     <textarea class="form-control" id="notes" th:field="*{notes}" rows="5"></textarea>
                 </div>
 
-                <!--HIDE THIS PLEASE-->
-
-                <input th:field="*{student.id}" th:value="${student.id}"/>
-
-                <!--HIDE THIS PLEASE-->
+                <input type="hidden"  th:value="${student.id}" name="student"/>
 
                 <button type="submit">Create Event</button>
 

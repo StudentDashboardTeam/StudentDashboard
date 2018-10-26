@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.websocket.Session;
 import java.awt.*;
@@ -57,11 +58,15 @@ public class EventAddController {
 
     }
     @PostMapping("/users/addEvent")
-    public String create(@ModelAttribute Events event) {
+    public String create(@ModelAttribute Events event, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         event.setUser(userRepository.findOne(user.getId()));
         eventRepository.save(event);
-        return "/users/students";
+
+        Student curStudent = event.getStudent();
+        model.addAttribute("student", curStudent);
+
+        return "redirect:/users/studentEvents/" + curStudent.getId();
     }
 }
