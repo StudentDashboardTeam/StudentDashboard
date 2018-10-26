@@ -15,26 +15,26 @@
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
-    <div class="container">
-        <h1 class="mt-5">Applicant QuickView</h1>
+    <div class="container-fluid mt-5">
+        <h1>Applicant QuickView</h1>
         <!--<h5 class="mb-4">Click on students first name to see a profile.</h5>-->
-        <table>
+        <table class="table table-hover" id="applicantsTable">
             <tr class="table-success">
-                <th scope="row">First Name</th>
-                <th scope="row" class="pl-4">Last Name</th>
-                <th scope="row">Email</th>
-                <th scope="row">Phone</th>
-                <th scope="row" class="pl-4">Allow Texts</th>
-                <th scope="row">Address</th>
-                <th scope="row">City</th>
-                <th scope="row"></th>
+                <th scope="col" onclick="sortTable(0, 'applicantsTable')">First Name</th>
+                <th scope="col" onclick="sortTable(1, 'applicantsTable')" class="pl-4">Last Name</th>
+                <th scope="col" onclick="sortTable(2, 'applicantsTable')">Email</th>
+                <th scope="col" onclick="sortTable(3, 'applicantsTable')">Phone</th>
+                <th scope="col" onclick="sortTable(4, 'applicantsTable')" class="pl-4">Allow Texts</th>
+                <th scope="col" onclick="sortTable(5, 'applicantsTable')">Address</th>
+                <th scope="col" onclick="sortTable(6, 'applicantsTable')">City</th>
+                <th scope="col"></th>
             </tr>
             <tr style="font-size:15px" th:each="applicant : ${applicants}">
-                <td><p th:text="${applicant.firstName}" /></td>
-                <td class="pl-4"><p th:text="${applicant.lastName}"/></td>
+                <td scope="row"><p th:text="${applicant.firstName}" /></td>
+                <td><p th:text="${applicant.lastName}"/></td>
                 <td><p th:text="${applicant.email}"/></td>
                 <td><p th:text="${applicant.phone}"/></td>
-                <td class="px-5"><p th:text="${applicant.allowSms}"/></td>
+                <td><p th:text="${applicant.allowSms}"/></td>
                 <td><p th:text="${applicant.streetAddress}"/></td>
                 <td><p th:text="${applicant.cityOfResidence}"/></td>
                 <td><a th:href="@{/users/students/{id}(id=${applicant.id})}">View</a></td>
@@ -43,5 +43,8 @@
     </div>
 
 </div>
+
+<th:block th:replace="partials :: scripts" />
+<script th:src="@{/js/sortTable.js}" />
 </body>
 </html>

@@ -6,22 +6,25 @@
 
 <nav th:replace="partials :: navbar" />
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <h1>Cohort QuickView</h1>
     <h5 class="mb-4">Click on Cohort name to see a profile.</h5>
-    <table>
+    <table class="table table-hover" id="cohortsTable">
         <tr class="table-success">
-            <th scope="row">Cohort Name</th>
-            <th scope="row">Start Date</th>
-            <th scope="row" class="pl-4">End Date</th>
+            <th scope="col" onclick="sortTable(0, 'cohortsTable')">Cohort Name</th>
+            <th scope="col" onclick="sortTable(1, 'cohortsTable')">Start Date</th>
+            <th scope="col" onclick="sortTable(2, 'cohortsTable')">End Date</th>
         </tr>
         <tr th:each="cohort : ${cohorts}">
-            <td><a th:href="@{/users/cohorts/{id}(id=${cohort.id})}"><p th:text="${cohort.getName()}" /></a></td>
+            <td scope="row"><a th:href="@{/users/cohorts/{id}(id=${cohort.id})}"><p th:text="${cohort.getName()}" /></a></td>
             <td><p th:text="${cohort.startDate}"/></td>
-            <td class="pl-4"><p th:text="${cohort.endDate}"/></td>
+            <td><p th:text="${cohort.endDate}"/></td>
         </tr>
     </table>
 </div>
 </div>
+
+<th:block th:replace="partials :: scripts" />
+<script th:src="@{/js/sortTable.js}" />
 </body>
 </html>
