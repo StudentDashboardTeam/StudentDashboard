@@ -17,7 +17,7 @@
                     <label for="eventName">Event Name:</label>
                     <select class="custom-select" id="eventName" th:field="*{type.name}">
                         <option th:each="event : ${eventTypes}"
-                                th:value="${event.id}"
+                                th:value="${event.name}"
                                 th:utext="${event.name}">
                         </option>
                     </select>
