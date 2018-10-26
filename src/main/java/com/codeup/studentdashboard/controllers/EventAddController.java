@@ -60,9 +60,12 @@ public class EventAddController {
     @PostMapping("/users/addEvent")
     public String create(@ModelAttribute Events event, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Long et = event.getId();
-//        EventType eType = event.getType();
-//        event.setType(eventTypeRepository.findOne(eType.getId()));
+
+        // THIS WILL FIND EVENT BY ID FROM SUBMITTED FORM AND ADD EVENT TYPE WITHOUT DUPLICATING
+        // THE EVENT TYPE IN THE TABLE
+        EventType eType = event.getType();
+        event.setType(eventTypeRepository.findOne(eType.getId()));
+
         event.setUser(userRepository.findOne(user.getId()));
         eventRepository.save(event);
 

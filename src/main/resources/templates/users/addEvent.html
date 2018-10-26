@@ -15,9 +15,9 @@
             <form method="post" th:action="@{/users/addEvent}" th:object="${event}">
                 <div class="form-group">
                     <label for="eventName">Event Name:</label>
-                    <select class="custom-select" id="eventName" th:field="*{type.name}">
+                    <select class="custom-select" id="eventName" th:field="*{type}">
                         <option th:each="event : ${eventTypes}"
-                                th:value="${event.name}"
+                                th:value="${event.id}"
                                 th:utext="${event.name}">
                         </option>
                     </select>
