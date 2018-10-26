@@ -10,7 +10,7 @@
             <a class="mb-4 mt-5" th:href="@{/users/addEvent/{id}(id=${student.id})}"><button class="btn btn-success">Add Event</button></a>
         </div>
         <div class="card border-success">
-            <div class="card-header"><h3 th:text="${student.firstName} + '  ' + ${student.lastName}"/></div>
+            <div class="card-header"><h3 th:text="'Student/Applicant Name: ' + ${student.firstName} + '  ' + ${student.lastName}"/></div>
             <div class="card-body" style="background-color:#6cbc7a">
                 <div class="card-title" style="color:white">Completion Events and Relative Data</div>
                 <div th:each="event : ${studentEvents}">
@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <!--<div class="card-title"></div>-->
                                 <h6 class="card-text" style="color:#74b566"><strong>Event Score:</strong></h6>
-                                <h5 th:text="${event.score != 0 ? event.score : 'No Score Available'}" />
+                                <h5 th:text="${event.score != 0 ? event.score : 'No score associated with this event'}" />
                                 <h6 class="card-text" style="color:#74b566"><strong>Event Date:</strong></h6>
                                 <h5 th:text="${event.date != null ? event.date : 'Not Completed'}"/>
                                 <h6 class="card-text" style="color:#74b566"><strong>Event Administerer:</strong></h6>

@@ -69,7 +69,7 @@ public class EventAddController {
 
         // USER MUST BE SET DYNAMICALLY AS CASCADING IS NOT YET SET FOR ENTITY UPDATE
         if (event.getScore() == null) {
-            event.setScore(100);
+            event.setScore(0);
         }
 
         event.setUser(userRepository.findOne(user.getId()));
