@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class StudentController {
 
@@ -17,6 +18,7 @@ public class StudentController {
     @GetMapping("/users/students")
     public String student(Model model) {
         model.addAttribute("students", studentRepository.findAll());
+
         return "/users/students";
     }
 }
