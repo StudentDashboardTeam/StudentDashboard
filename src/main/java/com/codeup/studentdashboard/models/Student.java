@@ -6,6 +6,7 @@ import com.codeup.studentdashboard.models.student.HAUOption;
 import com.codeup.studentdashboard.models.student.PaymentOption;
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -102,36 +103,36 @@ public class Student {
     )
     private Cohort cohort;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToMany(fetch =  FetchType.LAZY, mappedBy = "student")
     private List<Events> events;
 
     public Student() {}
 
-    public Student(Student other) {
-        this.id = other.id;
-        this.firstName = other.firstName;
-        this.lastName = other.lastName;
-        this.email = other.email;
-        this.phone = other.phone;
-        this.allowSms = other.allowSms;
-        this.streetAddress = other.streetAddress;
-        this.cityOfResidence = other.cityOfResidence;
-        this.zipCode = other.zipCode;
-        this.age = other.age;
-        this.referrer = other.referrer;
-        this.gender = other.gender;
-        this.freeSchedule = other.freeSchedule;
-        this.resumeFile = other.resumeFile;
-        this.giBill = other.giBill;
-        this.billboards = other.billboards;
-        this.describe = other.describe;
-        this.descOther = other.descOther;
-        this.why = other.why;
-        this.questions = other.questions;
-        this.paymentOptions = other.paymentOptions;
-        this.hauOptions = other.hauOptions;
-        this.cohort = other.cohort;
-        this.events = other.events;
+    public Student(Student copy) {
+        this.id = copy.id;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.email = copy.email;
+        this.phone = copy.phone;
+        this.allowSms = copy.allowSms;
+        this.streetAddress = copy.streetAddress;
+        this.cityOfResidence = copy.cityOfResidence;
+        this.zipCode = copy.zipCode;
+        this.age = copy.age;
+        this.referrer = copy.referrer;
+        this.gender = copy.gender;
+        this.freeSchedule = copy.freeSchedule;
+        this.resumeFile = copy.resumeFile;
+        this.giBill = copy.giBill;
+        this.billboards = copy.billboards;
+        this.describe = copy.describe;
+        this.descOther = copy.descOther;
+        this.why = copy.why;
+        this.questions = copy.questions;
+        this.paymentOptions = copy.paymentOptions;
+        this.hauOptions = copy.hauOptions;
+        this.cohort = copy.cohort;
+        this.events = copy.events;
     }
 
     public Student(java.lang.String firstName, java.lang.String lastName, java.lang.String email,
@@ -354,6 +355,7 @@ public class Student {
     }
 
     public List<Events> getEvents() {
+        events.sort(Comparator.comparing(Events::getDate).reversed());
         return events;
     }
 

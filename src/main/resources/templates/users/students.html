@@ -12,32 +12,43 @@
     <!--Admin: <span th:text="${#authentication.principal.admin}">defaultAdmin</span>-->
 <!--</div>-->
 
+<!--first name, last name, email, phone, gender, giBIll, referrer, resumeFile, city, questions-->
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
 
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <h1>Student QuickView</h1>
         <!--<h5 class="mb-4">Click on students first name to see a profile.</h5>-->
-        <table>
+        <table class="table table-hover" id="studentsTable">
             <tr class="table-success">
-                <th scope="row">First Name</th>
-                <th scope="row" class="pl-4">Last Name</th>
-                <th scope="row">Email</th>
-                <th scope="row">Phone</th>
-                <th scope="row" class="pl-4">Allow Texts</th>
-                <th scope="row">Address</th>
-                <th scope="row">City</th>
-                <th scope="row"></th>
+                <th scope="col" onclick="sortTable(0)">First Name</th>
+                <th scope="col" onclick="sortTable(1)">Last Name</th>
+                <th scope="col" onclick="sortTable(2)">Email</th>
+                <th scope="col" onclick="sortTable(3)">Phone</th>
+                <th scope="col" onclick="sortTable(4)">Gender</th>
+                <th scope="col" onclick="sortTable(5)">GI Bill</th>
+                <th scope="col" onclick="sortTable(6)">City of Residence</th>
+                <th scope="col" onclick="sortTable(7)">Last Event</th>
+                <th scope="col"></th>
             </tr>
             <tr style="font-size:15px" th:each="student : ${students}">
-                <td><p th:text="${student.firstName}" /></td>
-                <td class="pl-4"><p th:text="${student.lastName}"/></td>
-                <td><p th:text="${student.email}"/></td>
-                <td><p th:text="${student.phone}"/></td>
-                <td class="px-5"><p th:text="${student.allowSms}"/></td>
-                <td><p th:text="${student.streetAddress}"/></td>
-                <td><p th:text="${student.cityOfResidence}"/></td>
+                <td scope="row" th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td>
+                    <span th:text="${student.email}"
+                        data-container="body" data-placement="top"
+                        data-toggle="popover" data-trigger="hover"
+                        data-content="Single click to edit, double click to send email."
+                        th:attr="data-target=${student.email}"
+                        class="emailLinks">
+                    </span>
+                </td>
+                <td th:text="${student.phone}"></td>
+                <td th:text="${student.gender.toString().charAt(0)}"></td>
+                <td th:text="${student.giBill}"></td>
+                <td th:text="${student.cityOfResidence}"></td>
+                <td th:text="${student.events.get(0).id}"></td>
                 <td><a th:href="@{/users/students/{id}(id=${student.id})}">View</a></td>
             </tr>
         </table>
@@ -45,5 +56,8 @@
     </div>
 
 </div>
+
+<th:block th:replace="partials :: scripts" />
+<script th:src="@{/js/students.js}" />
 </body>
 </html>
