@@ -15,8 +15,8 @@
 <div sec:authorize="isAuthenticated()">
 
     <nav th:replace="partials :: navbar" />
-    <div class="container">
-        <h1 class="mt-5">Applicant QuickView</h1>
+    <div class="container-fluid mt-5">
+        <h1>Applicant QuickView</h1>
         <!--<h5 class="mb-4">Click on students first name to see a profile.</h5>-->
         <table class="table table-hover" id="applicantsTable">
             <tr class="table-success">
