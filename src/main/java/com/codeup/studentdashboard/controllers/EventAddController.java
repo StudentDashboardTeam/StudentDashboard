@@ -63,8 +63,14 @@ public class EventAddController {
 
         // THIS WILL FIND EVENT BY ID FROM SUBMITTED FORM AND ADD EVENT TYPE WITHOUT DUPLICATING
         // THE EVENT TYPE IN THE TABLE
+
         EventType eType = event.getType();
         event.setType(eventTypeRepository.findOne(eType.getId()));
+
+        // USER MUST BE SET DYNAMICALLY AS CASCADING IS NOT YET SET FOR ENTITY UPDATE
+        if (event.getScore() == null) {
+            event.setScore(100);
+        }
 
         event.setUser(userRepository.findOne(user.getId()));
         eventRepository.save(event);
